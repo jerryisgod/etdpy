@@ -1,0 +1,87 @@
+   /* 分割滿垂直div的2:8比例 */
+   body,
+   html {
+   	margin: 0;
+   	padding: 0;
+   	height: 100%;
+   }
+
+   .container {
+   	display: flex;
+   	height: 100%;
+   }
+
+   .left-column {
+   	flex: 2;
+   	padding: 20px;
+   	border: 1px solid #ccc;
+   	overflow-y: auto;
+   }
+
+   .right-column {
+   	flex: 8;
+   	padding: 20px;
+   	border: 1px solid #ccc;
+   	overflow-y: auto;
+
+   }
+
+
+   /*右下角圖片*/
+   .right-column {
+   	position: relative;
+
+   }
+
+   .right-column img {
+   	position: absolute;
+   	bottom: 0;
+   	right: 0;
+   	width: 250px;
+   	height: auto;
+   }
+
+   /*登入表單*/
+
+   .loginform {
+   	width: 400px; 
+    margin: 0 auto; 
+    text-align: center; 
+   }
+
+   .logintittle {
+   	margin: 0 auto;
+    text-align: left; 
+   }
+
+   .loginform2 {
+	font-weight: bold;
+	font-size: 40px; 
+	margin: 0 auto;
+    text-align: left; 
+   	border: 2px solid black;
+   	padding: 30px;
+
+   }
+   /*input調整*/
+   .l_id {
+            width: 200px; 
+            height: 20px; 
+            font-size: 30px; /* 设置输入框文字大小为14像素 */
+            color: #ffff; /* 设置输入框文字颜色为深灰色 */
+            background-color: black;
+            border: 2px solid black;
+            padding: 10px;
+        }
+   /*sh workshop字體顏色*/
+   h2 {
+   	font-weight: bold;
+   }
+
+   .c1 {
+   	color: red;
+   }
+
+   .c2 {
+   	color: black;
+   }
