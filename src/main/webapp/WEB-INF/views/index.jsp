@@ -25,7 +25,7 @@
 			<div class="loginform2">
 				<form action="/login" method="post">
 						<div class="">
-							<span class="item">帳號123</span> <input name="muid" type="text"
+							<span class="item">帳號</span> <input name="muid" type="text"
 								class="l_id" value="" tabindex="1">
 						</div>
 						<br>
