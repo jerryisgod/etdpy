@@ -11,9 +11,9 @@ public class Login {
 
 	}
 	
-	@GetMapping("/index")
+	@GetMapping("/login")
 	public String helloIndex(){
-		return "index";
+		return "login";
 	}
 
 }

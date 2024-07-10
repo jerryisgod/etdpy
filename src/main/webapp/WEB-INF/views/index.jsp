@@ -7,40 +7,34 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>S.H SHOP</title>
 <link rel="stylesheet" type="text/css" href="css/main.css">
+<script src="js/main.js"></script>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        text-align: center;
+        padding: 20px;
+    }
+    .welcome-message {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    .welcome-message h2 {
+        color: #333;
+    }
+</style>
 </head>
 <body>
-	<div class="container">
-		<div class="left-column">
-			<p>內容</p>
-		</div>
 
-		<div class="right-column">
-			
-			<div class="loginform">
-			<div class="logintittle">
-				<h2>
-					<span class="c1">S.H.</span> <span class="c2">Workshop</span>
-				</h2>
-			</div>
-			<div class="loginform2">
-				<form action="/login" method="post">
-						<div class="">
-							<span class="item">帳號</span> <input name="muid" type="text"
-								class="l_id" value="" tabindex="1">
-						</div>
-						<br>
-						<div class="">
-							<span class="item">密碼</span> <input name="mpassword"
-								type="password" class="l_id" value="" tabindex="2">
-						</div>
-				</form>
-				</div>
-			</div>
-			<a href="https://www.xvideos.com/"> <img src="images/messageImage_1711887769690.jpg" alt="地方媽媽需要你"></a>
-		</div>
-	</div>
+<div class="welcome-message">
+    <h2>歡迎來到S.H SHOP</h2>
+    <p>You are now logged in!</p>
+    <button type="button" onclick="location.href='login'">登出</button>
+</div>
+
 </body>
 </html>
-
-
-

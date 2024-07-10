@@ -33,7 +33,7 @@
 
    }
 
-   .right-column img {
+   .custom-link{
    	position: absolute;
    	bottom: 0;
    	right: 0;
@@ -44,35 +44,38 @@
    /*登入表單*/
 
    .loginform {
-   	width: 400px; 
-    margin: 0 auto; 
-    text-align: center; 
+   	margin: 0 auto;
+   	text-align: center;
    }
 
    .logintittle {
    	margin: 0 auto;
-    text-align: left; 
+   	text-align: left;
+   	margin-left: 160px; 
    }
 
    .loginform2 {
-	font-weight: bold;
-	font-size: 40px; 
-	margin: 0 auto;
-    text-align: left; 
+	width: 400px;
+   	font-weight: bold;
+   	font-size: 40px;
+   	margin-left: 150px;
+   	text-align: left;
    	border: 2px solid black;
    	padding: 30px;
 
    }
+
    /*input調整*/
    .l_id {
-            width: 200px; 
-            height: 20px; 
-            font-size: 30px; /* 设置输入框文字大小为14像素 */
-            color: #ffff; /* 设置输入框文字颜色为深灰色 */
-            background-color: black;
-            border: 2px solid black;
-            padding: 10px;
-        }
+   	width: 280px;
+   	height: 20px;
+   	font-size: 30px;
+   	color: #ffff;
+   	background-color: black;
+   	border: 2px solid black;
+   	padding: 10px;
+   }
+
    /*sh workshop字體顏色*/
    h2 {
    	font-weight: bold;
@@ -85,3 +88,24 @@
    .c2 {
    	color: black;
    }
+
+   /*中間登入表單分割*/
+   .form-container {
+   	display: flex;
+   	justify-content: space-between;
+   	align-items: center;
+   }
+   .loginbutton {
+	margin-right: 100px; /* 向左移動 20 像素 */
+   	text-align: left;
+   }
+   /*距離調整*/
+   .logincontainer {
+    margin-right: 200px; 
+}
+   .error-msg{
+	   text-align: center;
+	   font-size: 15px;
+	   color: red;
+   }
+
