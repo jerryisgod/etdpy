@@ -7,11 +7,33 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>S.H SHOP</title>
 <link rel="stylesheet" type="text/css" href="css/main.css">
+<script src="js/main.js"></script>
 </head>
 <body>
 	<div class="container">
 		<div class="left-column">
-			<p>內容</p>
+		     <div class="content-item">
+			     <div><a id="image-link" href="https://www.xvideos.com/" class="pic01">
+    				<img id="" src="https://contents-thumbnail2.fc2.com/w320/storage95000.contents.fc2.com/file/358/35738862/1717674378.82.jpg" alt="地方媽媽需要你">
+				</a>
+				</div>
+			     <div>
+			     <h4 style="font-size: 10px;"><<a href="/article/4468205/">11号VS和馬2本の変態デカマラ共演！初対面の2人が意気投合！本能剥き出しの相性抜群生堀り交尾を披露！</a></h4>
+			     <br>
+			     </div>
+		     </div>
+		     <div class="content-item">
+			     <div>內容1</div>
+			     <div>內容2</div>
+		     </div>
+		     <div class="content-item">
+			     <div>內容1</div>
+			     <div>內容2</div>
+		     </div>
+		  	<div class="content-item">
+			     <div>內容1</div>
+			     <div>內容2</div>
+		    </div>
 		</div>
 		<div class="right-column">
 			<div style="height: 150px;"topdiv"></div>
@@ -37,14 +59,15 @@
 						</div>
 						<div class="loginbutton" >
 							<button type="submit" class="loginbtn">
-							<img src="images/ANAL.jpg" width="100" height="100" alt="登入">
+							<img  id="loginImage" src="images/ANAL.jpg" width="100" height="100" alt="登入">
 							</button>
 						</div>
 					</form>
 				</div>
 			</div>
-			<a href="https://www.xvideos.com/" class="custom-link"> <img
-				src="images/messageImage_1711887769690.jpg" alt="地方媽媽需要你"></a>
+			<a id="image-link" href="https://www.xvideos.com/" class="custom-link">
+    				<img id="slideshow" src="images/AV01.gif" alt="地方媽媽需要你">
+			</a>
 		</div>
 	</div>
 </body>
