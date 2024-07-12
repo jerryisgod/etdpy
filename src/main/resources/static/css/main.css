@@ -14,7 +14,6 @@
    .left-column {
    	flex: 2;
    	padding: 2px;
-   	border: 1px solid #000;
    	overflow-y: auto;
    	display: flex; /* 使用 Flexbox 布局 */
     flex-direction: column; /* 垂直排列 */
@@ -24,26 +23,20 @@
    .content-item {
     flex: 1; /* 每个占据相等空间 */
     margin-bottom: 5px; /* 调整每个 content-item 之间的间距 */
-    border: 1px solid #000;
     display: flex; /* 使用 Flexbox 布局 */
 }
 .content-item > div {
     flex: 1; /* 每个占据相等空间 */
-    border: 1px solid #000;
-    display: flex; /* 使用 Flexbox 布局 */
-    justify-content: center; /* 图片水平居中 */
-    align-items: center; /* 图片垂直居中 */
 }
 .content-item img {
     max-width: 100%; /* 图片最大宽度不超过父元素宽度 */
-    height: 200px; /* 图片最大高度不超过父元素高度 */
+    height: 165px; /* 图片最大高度不超过父元素高度 */
 }
 
    
    .right-column {
    	flex: 8;
    	padding: 20px;
-   	border: 1px solid #ccc;
    	overflow-y: auto;
 
    }
