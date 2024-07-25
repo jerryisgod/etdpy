@@ -7,13 +7,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class Login {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
 	}
 	
 	@GetMapping("/login")
 	public String helloIndex(){
 		return "login";
+	}
+	@GetMapping("/jerry")
+	public String helloJerry(){
+		return "jerry";
 	}
 
 }
