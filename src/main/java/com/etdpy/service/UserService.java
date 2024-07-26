@@ -9,7 +9,5 @@ public interface UserService {
 	
 	void addUser(User user);
 	
-	User getStudent(long id);
 	
-	List<User> getAll();
 }
