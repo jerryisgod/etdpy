@@ -9,7 +9,7 @@ public class index {
     public String login(String muid, String mpassword) {
         System.out.println("Username: " + muid + ", Password: " + mpassword);
         if ("jerry".equals(muid) && "a123".equals(mpassword)) {
-        	return "index";
+        	return "index11";
         } else {
         	return "login";
         }
