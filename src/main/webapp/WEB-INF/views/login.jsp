@@ -13,8 +13,8 @@
 	<div class="container">
 		<div class="left-column">
 		     <div class="content-item">
-			     <div><a id="image-link" href="https://adult.contents.fc2.com/article/4468205/" class="pic01">
-    				<img id="" src="https://contents-thumbnail2.fc2.com/w320/storage95000.contents.fc2.com/file/358/35738862/1717674378.82.jpg" alt="">
+			     <div><a href="https://adult.contents.fc2.com/article/4468205/" class="pic01">
+    				<img src="https://contents-thumbnail2.fc2.com/w320/storage95000.contents.fc2.com/file/358/35738862/1717674378.82.jpg" alt="">
 				</a>
 				</div>
 			     <div>
@@ -107,6 +107,5 @@
     				<img id="slideshow" src="images/AV01.gif" alt="地方媽媽需要你">
 			</a>
 		</div>
-	</div>
 </body>
 </html>
