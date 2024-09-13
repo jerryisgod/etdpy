@@ -1,16 +1,7 @@
 package com.etdpy.controller;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
-import java.math.BigDecimal;
-import java.util.List;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 
 @Controller
@@ -25,4 +16,15 @@ public class login {
 		return "index";
 	}
 
+	@GetMapping("/ok")
+	@ResponseBody
+	public String OK(){
+		return "OK";
+	}
+
+	@GetMapping("/no")
+	@ResponseBody
+	public String NO(){
+		return "NO";
+	}
 }

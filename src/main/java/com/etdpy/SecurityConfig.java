@@ -36,8 +36,9 @@ public class SecurityConfig {
                 	.requestMatchers("/WEB-INF/**").permitAll()
                 	.requestMatchers(HttpMethod.GET, "/css/**", "/js/**", "/images/**").permitAll() // 允許靜態資源的請求
                     .requestMatchers(HttpMethod.GET, "/").authenticated()
-//                  .requestMatchers(HttpMethod.GET, "/course-feedback").hasAnyRole("USER", "ADMIN")
-//                  .requestMatchers(HttpMethod.GET, "/quoteForm").hasRole("管理員")
+								.requestMatchers(HttpMethod.GET, "/ok").permitAll() // 允许所有用户访问 /ok
+//                  .requestMatchers(HttpMethod.GET, "/course-feedback").hasAnyAuthority("USER", "ADMIN")
+                  	.requestMatchers(HttpMethod.GET, "/ok").hasAuthority("管理員")
                     .anyRequest().authenticated()
 
                 )
