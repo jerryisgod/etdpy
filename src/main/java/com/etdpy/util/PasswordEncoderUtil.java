@@ -19,7 +19,7 @@ public class PasswordEncoderUtil {
 
   
     public static void main(String[] args) {
-        String rawPassword = "a29402884";
+        String rawPassword = "a123";
         String encodedPassword = encodePassword(rawPassword);
         System.out.println("Encoded Password: " + encodedPassword);
     }

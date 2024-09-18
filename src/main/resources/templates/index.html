@@ -10,7 +10,6 @@
     /* 自定义样式 */
     .sidebar {
       background-color: #E0F0FF;
-      height: 100vh;
       padding-top: 20px;
     }
 
@@ -39,15 +38,12 @@
       color: #F00;
     }
 
-    .content {
-      padding: 20px;
-      padding-top: 120px; /* 确保内容不会被顶部遮盖 */
-    }
+
 
     .login-record {
       border: 2px solid black;
       padding: 20px;
-      margin-top: 20px;
+      margin-top: 10px;
     }
 
     .sidebar .btn {
@@ -70,23 +66,23 @@
   <div class="row">
     <!-- 左侧导航栏 -->
     <div class="col-md-2 sidebar">
-      <button class="btn btn-info" onclick="window.location.href='ok'">新增工單</button>
-      <button class="btn btn-info" onclick="window.location.href='no'">客戶資訊</button>
-      <button class="btn btn-info">帳目管理</button>
-      <button class="btn btn-info">維修紀錄</button>
-      <button class="btn btn-info">系統設定</button>
+      <button class="btn btn-info btn-lg" onclick="window.location.href='ok'">新增工單</button>
+      <button class="btn btn-info btn-lg" onclick="window.location.href='no'">客戶資訊</button>
+      <button class="btn btn-info btn-lg">帳目管理</button>
+      <button class="btn btn-info btn-lg">維修紀錄</button>
+      <button class="btn btn-info btn-lg">系統設定</button>
     </div>
 
     <!-- 中间内容区 -->
-    <div class="col-md-10 content">
+    <div class="col-md-10">
       <!-- 中间的登录记录 -->
       <div class="login-record">
         <h3>最近的登入紀錄</h3>
         <table class="table table-striped">
           <thead>
           <tr>
-            <th>用户名</th>
-            <th>登录时间</th>
+            <th>用戶名稱</th>
+            <th>登入時間</th>
           </tr>
           </thead>
           <tbody>

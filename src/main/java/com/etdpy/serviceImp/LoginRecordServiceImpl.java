@@ -3,6 +3,8 @@ import com.etdpy.dao.LoginRecordRepo;
 import com.etdpy.entity.LoginRecord;
 import com.etdpy.service.LoginRecordService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,7 +16,8 @@ public class LoginRecordServiceImpl implements LoginRecordService  {
 
     @Override
     public List<LoginRecord> getRecentLoginRecords(String username) {
-        return loginRecordRepo.findByUsernameOrderByLoginTimeDesc(username);
+        Pageable pageable = PageRequest.of(0, 11); // 撈取前5筆資料 可調整
+        return loginRecordRepo.findByUsernameOrderByLoginTimeDesc(username,pageable);
     }
 }
 
