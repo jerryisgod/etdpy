@@ -1,5 +1,6 @@
 package com.etdpy;
 
+import com.etdpy.listener.CustomAuthenticationSuccessHandler;
 import com.etdpy.service.MyUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -16,6 +17,11 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
+	private final CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler;
+
+	public SecurityConfig(CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler) {
+		this.customAuthenticationSuccessHandler = customAuthenticationSuccessHandler;
+	}
 	
 	 @Autowired
 	 private MyUserDetailsService myUserDetailsService;
@@ -28,8 +34,8 @@ public class SecurityConfig {
         		.authenticationManager(authenticationManager())
         		 .formLogin(formLogin -> formLogin
 								 .loginPage("/login") // 指定自定義的登入頁面
+								 .successHandler(customAuthenticationSuccessHandler)
 								 .failureUrl("/login?error=true") // 登入失敗時的重定向
-								 .defaultSuccessUrl("/index", true) // 登入成功後重定向到 /home
 								 .permitAll() // 允許所有用戶訪問登入頁面
         				 )
                 .authorizeHttpRequests(requests -> requests

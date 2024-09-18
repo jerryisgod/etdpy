@@ -81,11 +81,21 @@
     <div class="col-md-10 content">
       <!-- 中间的登录记录 -->
       <div class="login-record">
-        <p>首頁的中間位置</p>
-        <p>顯示登入紀錄 5 筆</p>
-        <p>Ex:</p>
-        <p>SH01 於 2024.03.29 20:01 登入</p>
-        <p>SH00 於 2024.03.29 20:00 登入</p>
+        <h3>最近的登入紀錄</h3>
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th>用户名</th>
+            <th>登录时间</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr th:each="record : ${loginRecords}">
+            <td th:text="${record.username}"></td>
+            <td th:text="${record.getLoginTime()}"></td>
+          </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
