@@ -17,33 +17,51 @@
 <body>
 <div class="container-fluid full-height">
 	<div class="row h-100">
-		<div class="col-md-3 bg-light p-3">
+		<div class="col-md-2 bg-light p-3">
 			左侧内容
 		</div>
 
-		<div class="col-md-6 bg-white p-3">
-			<div class="login-container">
-				<h2 class="text-center mb-4">Login</h2>
-				<form action="/login" method="post">
-					<div class="mb-3">
-						<label for="username" class="form-label">Username</label>
-						<input type="text" class="form-control" id="username" name="username" required>
+		<div class="col-md-8 bg-white p-3">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+						<div class="card border-0 shadow rounded-3 my-5">
+							<div class="card-body p-4 p-sm-5">
+								<h5 class="card-title text-center mb-5 fw-light fs-5">Sign In</h5>
+								<form action="/login" method="POST">
+									<div class="form-floating mb-3">
+										<input type="text" class="form-control" name="username" id="floatingInput" placeholder="">
+										<label for="floatingInput">帳號</label>
+									</div>
+									<div class="form-floating mb-3">
+										<input type="password" class="form-control" name="password" id="floatingPassword" placeholder="">
+										<label for="floatingPassword">密碼</label>
+									</div>
+
+									<div class="form-check mb-3">
+										<input class="form-check-input" type="checkbox" value="true" name="remember-me" id="rememberPasswordCheck">
+										<label class="form-check-label" for="rememberPasswordCheck">
+											記住帳號
+										</label>
+									</div>
+									<div class="d-grid">
+										<button class="btn btn-primary btn-login text-uppercase fw-bold" type="submit">登入</button>
+									</div>
+									<hr class="my-4">
+								</form>
+
+							</div>
+						</div>
 					</div>
-					<div class="mb-3">
-						<label for="password" class="form-label">Password</label>
-						<input type="password" class="form-control" id="password" name="password" required>
-					</div>
-					<button type="submit" class="loginbtn w-100">
-						<img  id="loginImage" src="images/ANAL.jpg" width="100" height="100" alt="登入">
-					</button>
-				</form>
+				</div>
 			</div>
+
 			<div th:if="${param.error}" style="color: red; text-align: center;">
 				<p>帳號或密碼錯誤，請重試。</p>
 			</div>
 		</div>
 
-		<div class="col-md-3 bg-light p-3">
+		<div class="col-md-2 bg-light p-3">
 			右侧内容
 		</div>
 	</div>

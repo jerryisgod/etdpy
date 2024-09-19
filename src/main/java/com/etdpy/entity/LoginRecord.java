@@ -3,6 +3,7 @@ package com.etdpy.entity;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 public class LoginRecord {
@@ -13,7 +14,9 @@ public class LoginRecord {
     private Long id;
 
     private String username;
-    private LocalDateTime loginTime;
+    @Temporal(TemporalType.TIMESTAMP) // 指定精确到时间戳
+    private Date loginTime;
+
 
     public Long getId() {
         return id;
@@ -31,17 +34,17 @@ public class LoginRecord {
         this.username = username;
     }
 
-    public LocalDateTime getLoginTime() {
+    public Date getLoginTime() {
         return loginTime;
     }
 
-    public void setLoginTime(LocalDateTime loginTime) {
+    public void setLoginTime(Date loginTime) {
         this.loginTime = loginTime;
     }
 
     @Override
     public String toString() {
-        return "LoginAttempt{" +
+        return "LoginRecord{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
                 ", loginTime=" + loginTime +

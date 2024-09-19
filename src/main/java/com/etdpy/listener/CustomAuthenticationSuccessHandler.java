@@ -11,6 +11,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Component
 public class CustomAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
@@ -31,7 +32,7 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
         String username = authentication.getName();
         LoginRecord loginRecord = new LoginRecord();
         loginRecord.setUsername(username);
-        loginRecord.setLoginTime(LocalDateTime.now());
+        loginRecord.setLoginTime(new Date()); // 使用 java.util.Date 的当前时间
         loginRecordRepo.save(loginRecord);
         response.sendRedirect("/index");
 

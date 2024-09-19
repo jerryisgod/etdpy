@@ -1,146 +1,49 @@
-   /* 分割滿垂直div的2:8比例 */
-   body,
-   html {
-   	margin: 0;
-   	padding: 0;
-   	height: 100%;
-   }
-
-   .container {
-   	display: flex;
-   	height: 100%;
-   }
-
-   .left-column {
-   	flex: 2;
-   	padding: 2px;
-   	overflow-y: auto;
-   	display: flex; /* 使用 Flexbox 布局 */
-    flex-direction: column; /* 垂直排列 */
-   	
-   }
-   
-   .content-item {
-    flex: 1; /* 每个占据相等空间 */
-    margin-bottom: 5px; /* 调整每个 content-item 之间的间距 */
-    display: flex; /* 使用 Flexbox 布局 */
-}
-.content-item > div {
-    flex: 1; /* 每个占据相等空间 */
-}
-.content-item img {
-    max-width: 100%; /* 图片最大宽度不超过父元素宽度 */
-    height: 165px; /* 图片最大高度不超过父元素高度 */
+/* 自定义样式 */
+.sidebar {
+	background-color: #E0F0FF;
+	padding-top: 20px;
 }
 
-   
-   .right-column {
-   	flex: 8;
-   	padding: 20px;
-   	overflow-y: auto;
+/* 顶部 header 占据全屏宽度 */
+.header {
+	background-color: #F8F9FA;
+	padding: 20px;
+	text-align: center;
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1000;
+}
 
-   }
+.header-logo {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px 20px;
+}
 
-
-   /*右下角圖片*/
-   .right-column {
-   	position: relative;
-
-   }
-
-   .custom-link {
-   	position: absolute;
-   	bottom: 0;
-   	right: 0;
-   	width: auto;
-   	height: auto;
-   }
-
-   /*登入表單*/
-
-   .loginform {
-   	margin: 0 auto;
-   	text-align: center;
-   }
-
-   .logintittle {
-   	margin: 0 auto;
-   	text-align: left;
-   	margin-left: 160px;
-   }
-
-   .loginform2 {
-   	width: 400px;
-   	font-weight: bold;
-   	font-size: 40px;
-   	margin-left: 150px;
-   	text-align: left;
-   	border: 2px solid black;
-   	padding: 30px;
-
-   }
-
-   /*input調整*/
-   .l_id {
-   	width: 280px;
-   	height: 20px;
-   	font-size: 30px;
-   	color: #ffff;
-   	background-color: black;
-   	border: 2px solid black;
-   	padding: 10px;
-   }
-
-   /*sh workshop字體顏色*/
-   h2 {
-   	font-weight: bold;
-   }
-
-   .c1 {
-   	color: red;
-   }
-
-   .c2 {
-   	color: black;
-   }
-
-   /*中間登入表單分割*/
-   .form-container {
-   	display: flex;
-   	justify-content: space-between;
-   	align-items: center;
-   }
-
-   .loginbutton {
-   	margin-right: 100px;
-   	/* 向左移動 20 像素 */
-   	text-align: left;
-   }
-
-   /*距離調整*/
-   .logincontainer {
-   	margin-right: 200px;
-   }
-
-   .error-msg {
-   	text-align: center;
-   	font-size: 15px;
-   	color: red;
-   }
-   
-/*隱藏背後的button樣式*/
-   .loginbtn {
-   	background: none;
-   	border: none;
-   	padding: 0;
-   }
-   .loginbtn img:hover {
- 		width: 120px;
- 		height: 120px;
-	}
+.header-logo h1 {
+	font-size: 36px;
+	font-family: 'Brush Script MT', cursive;
+	color: #F00;
+}
 
 
-   .loginbtn img {
-    border-radius: 10%; /* 使外框为圆形 */
-    border: 5px solid rgb(128, 255, 255); /* 设置边框颜色和宽度 */
-   }
+
+.login-record {
+	border: 3px solid black;
+	padding: 20px;
+	margin-top: 10px;
+}
+
+.sidebar .btn {
+	display: block;
+	width: 100%;
+	margin-bottom: 15px;
+}
+
+.fixed-area {
+	border-bottom: 2px solid #F8F9FA;
+	padding-bottom: 10px;
+}
