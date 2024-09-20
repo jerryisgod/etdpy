@@ -36,15 +36,8 @@ public class login {
 		return "index";
 	}
 
-	@GetMapping("/ok")
-	@ResponseBody
-	public String OK(){
-		return "OK";
-	}
-
-	@GetMapping("/no")
-	@ResponseBody
-	public String NO(){
-		return "NO";
+	@GetMapping("/quoteForm")
+	public String quoteForm() {
+		return "quoteForm";
 	}
 }

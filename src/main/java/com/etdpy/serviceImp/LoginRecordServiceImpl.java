@@ -16,7 +16,7 @@ public class LoginRecordServiceImpl implements LoginRecordService  {
 
     @Override
     public List<LoginRecord> getRecentLoginRecords(String username) {
-        Pageable pageable = PageRequest.of(0, 11); // 撈取前11筆資料 可調整
+        Pageable pageable = PageRequest.of(0, 10); // 撈取前11筆資料 可調整
         return loginRecordRepo.findByUsernameOrderByLoginTimeDesc(username,pageable);
     }
 }
