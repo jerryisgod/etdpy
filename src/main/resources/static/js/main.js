@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     loginImage.classList.add('hovered');
   });
 
-  loginImage.addEventListener('mouseout', function() {
+  loginImage.addEventListener('mouse', function() {
     loginImage.src = 'images/ANAL.jpg';
     loginImage.classList.remove('hovered');
   });

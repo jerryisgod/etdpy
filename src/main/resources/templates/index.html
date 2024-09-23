@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,15 +19,15 @@
         新增工單
       </button>
       <ul class="dropdown-menu text-center">
-        <li><a class="dropdown-item" href="quoteForm">估價單</a></li>
+        <li><a class="dropdown-item" href="#">估價單</a></li>
         <li><a class="dropdown-item" href="#">維修單</a></li>
       </ul>
       <button type="button" class="btn btn-info btn-lg dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
         客戶資訊
       </button>
       <ul class="dropdown-menu text-center">
-        <li><a class="dropdown-item" href="guest">目錄</a></li>
-        <li><a class="dropdown-item" href="#">搜尋</a></li>
+        <li><a class="dropdown-item" href="customerList">目錄</a></li>
+        <li><a class="dropdown-item" href="search">搜尋</a></li>
         <li><a class="dropdown-item" href="/car-records/car">新增</a></li>
       </ul>
       <button class="btn btn-info btn-lg">帳目管理</button>

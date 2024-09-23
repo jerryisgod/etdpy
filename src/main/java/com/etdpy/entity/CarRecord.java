@@ -18,6 +18,7 @@ public class CarRecord implements Serializable {
     private String color;  // 顏色
     private String style;  // 樣式
     private String engineNumber;  // 引擎號碼
+    private String VIN;           //車身號碼
     private String licensePlate;  // 車牌號碼
     private String ownerName;  // 車主名稱
     private String ownerPhone;  // 車主電話
@@ -28,20 +29,20 @@ public class CarRecord implements Serializable {
     private String companyTaxId;  // 統一編號
     private String notes;  // 其他備註
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public int getYear() {
         return year;
     }
 
     public void setYear(int year) {
         this.year = year;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getBrand() {
@@ -60,20 +61,20 @@ public class CarRecord implements Serializable {
         this.model = model;
     }
 
-    public String getFuelType() {
-        return fuelType;
-    }
-
-    public void setFuelType(String fuelType) {
-        this.fuelType = fuelType;
-    }
-
     public String getEngineCapacity() {
         return engineCapacity;
     }
 
     public void setEngineCapacity(String engineCapacity) {
         this.engineCapacity = engineCapacity;
+    }
+
+    public String getFuelType() {
+        return fuelType;
+    }
+
+    public void setFuelType(String fuelType) {
+        this.fuelType = fuelType;
     }
 
     public String getColor() {
@@ -92,20 +93,28 @@ public class CarRecord implements Serializable {
         this.style = style;
     }
 
-    public String getLicensePlate() {
-        return licensePlate;
-    }
-
-    public void setLicensePlate(String licensePlate) {
-        this.licensePlate = licensePlate;
-    }
-
     public String getEngineNumber() {
         return engineNumber;
     }
 
     public void setEngineNumber(String engineNumber) {
         this.engineNumber = engineNumber;
+    }
+
+    public String getVIN() {
+        return VIN;
+    }
+
+    public void setVIN(String VIN) {
+        this.VIN = VIN;
+    }
+
+    public String getLicensePlate() {
+        return licensePlate;
+    }
+
+    public void setLicensePlate(String licensePlate) {
+        this.licensePlate = licensePlate;
     }
 
     public String getOwnerName() {
@@ -124,20 +133,20 @@ public class CarRecord implements Serializable {
         this.ownerPhone = ownerPhone;
     }
 
-    public String getOwnerLandline() {
-        return ownerLandline;
-    }
-
-    public void setOwnerLandline(String ownerLandline) {
-        this.ownerLandline = ownerLandline;
-    }
-
     public String getBackupPhone() {
         return backupPhone;
     }
 
     public void setBackupPhone(String backupPhone) {
         this.backupPhone = backupPhone;
+    }
+
+    public String getOwnerLandline() {
+        return ownerLandline;
+    }
+
+    public void setOwnerLandline(String ownerLandline) {
+        this.ownerLandline = ownerLandline;
     }
 
     public String getOwnerAddress() {
@@ -184,6 +193,7 @@ public class CarRecord implements Serializable {
                 ", color='" + color + '\'' +
                 ", style='" + style + '\'' +
                 ", engineNumber='" + engineNumber + '\'' +
+                ", VIN='" + VIN + '\'' +
                 ", licensePlate='" + licensePlate + '\'' +
                 ", ownerName='" + ownerName + '\'' +
                 ", ownerPhone='" + ownerPhone + '\'' +
