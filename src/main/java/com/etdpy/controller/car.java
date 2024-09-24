@@ -67,7 +67,7 @@ public class car {
         model.addAttribute("currentPage", page);
         model.addAttribute("totalPages", carRecordsPage.getTotalPages());
         model.addAttribute("searchKeyword", searchKeyword);
-        return "search"; // 返回显示订单历史的页面
+        return "searchResults"; // 返回显示订单历史的页面
     }
 
 
