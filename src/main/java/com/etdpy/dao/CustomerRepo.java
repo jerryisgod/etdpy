@@ -12,5 +12,5 @@ public interface CustomerRepo extends JpaRepository<CarRecord, Long> {
     Page<CarRecord> findAll(Pageable pageable);
 
     //根據車牌號碼或車主名稱或公司名稱進行模糊查詢
-    Page<CarRecord> findByCarOrNameOrCom(String licensePlate, String ownerName,String companyName, Pageable pageable);
+    Page<CarRecord> findByLicensePlateOrOwnerNameOrCompanyName(String licensePlate, String ownerName,String companyName, Pageable pageable);
 }

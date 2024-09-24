@@ -23,7 +23,10 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Page<CarRecord> searchOrderHistories(String keyword, int page, int size) {
-        return null;
+    public Page<CarRecord> searchCustomer(String keyword, int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        return customerRepo.findByLicensePlateOrOwnerNameOrCompanyName(keyword,keyword,keyword,pageable);
     }
+
+
 }

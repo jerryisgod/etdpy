@@ -8,7 +8,7 @@ public interface CustomerService {
 
     Page<CarRecord> getPaginatedCustomerList(int page, int size);
 
-    Page<CarRecord> searchOrderHistories(String keyword, int page, int size);
+    Page<CarRecord> searchCustomer(String keyword, int page, int size);
 
 
 }
