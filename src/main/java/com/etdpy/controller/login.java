@@ -40,4 +40,8 @@ public class login {
 	public String quoteForm() {
 		return "quoteForm";
 	}
+	@GetMapping("/eeee")
+	public String eee() {
+		return "eeee";
+	}
 }
