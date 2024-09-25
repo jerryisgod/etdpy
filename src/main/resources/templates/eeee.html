@@ -366,7 +366,7 @@
                 小計:<input type="text" value="" style="border: none;width: 100px;" />
             </div>
             <div>
-                :<input type="text" value="" style="border: none;width: 100px;" />
+                總計:<input type="text"  id="total" value="" style="border: none;width: 100px;" />
             </div>
         </div>
         <div class="col-3">
@@ -375,32 +375,25 @@
             </div>
         </div>
     </div>
-
-
     <script>
-        function calculate() {
-            const input1Elements = document.getElementsByClassName('input1');
-            const input2Elements = document.getElementsByClassName('input2');
-            const resultElements = document.getElementsByClassName('result');
+        function updateTotal() {
+            let total = 0;
+            document.querySelectorAll('.result').forEach(function(resultInput) {
+                total += parseFloat(resultInput.value) || 0;
+            });
+            document.getElementById('total').value = total.toFixed(2); // 保留两位小数
+        }
 
-            for (let i = 0; i < input1Elements.length; i++) {
-                const num1 = parseFloat(input1Elements[i].value) || 0;
-                const num2 = parseFloat(input2Elements[i].value) || 0;
-                resultElements[i].value = num1 * num2; // 计算金额
+        document.addEventListener("input", function(e) {
+            if (e.target.classList.contains("input1") || e.target.classList.contains("input2")) {
+                const row = e.target.closest('tr');
+                const quantity = row.querySelector('.input1').value || 0;
+                const price = row.querySelector('.input2').value || 0;
+                const resultInput = row.querySelector('.result');
+                resultInput.value = (quantity * price).toFixed(2); // 保留两位小数
+                updateTotal(); // 更新总计
             }
-        }
-
-        // 为每个输入框添加事件监听
-        const quantityInputs = document.getElementsByClassName('input1');
-        const priceInputs = document.getElementsByClassName('input2');
-
-        for (let input of quantityInputs) {
-            input.addEventListener('input', calculate);
-        }
-
-        for (let input of priceInputs) {
-            input.addEventListener('input', calculate);
-        }
+        });
     </script>
 </body>
 </html>
