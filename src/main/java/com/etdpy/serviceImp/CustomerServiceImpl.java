@@ -23,9 +23,9 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Page<CarRecord> searchCustomer(String keyword, int page, int size) {
-        Pageable pageable = PageRequest.of(page, size);
-        return customerRepo.findByLicensePlateOrOwnerNameOrCompanyName(keyword,keyword,keyword,pageable);
+    public Page<CarRecord> searchCustomer(String licensePlate, String ownerName, String companyName, Pageable pageable) {
+        return customerRepo.findByLicensePlateContainingIgnoreCaseOrOwnerNameContainingIgnoreCaseOrCompanyNameContainingIgnoreCase(
+                licensePlate, ownerName, companyName, pageable);
     }
 
 

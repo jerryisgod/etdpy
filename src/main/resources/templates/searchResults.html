@@ -10,53 +10,24 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </head>
 <body>
-<div class="container mt-5">
-    <h2 class="text-center">搜尋結果</h2>
-    <!-- 搜索框 -->
-    <form th:action="@{/orderHistorySearch}" method="get" class="mb-3">
-        <div class="input-group">
-            <input type="text" name="searchKeyword" class="form-control" placeholder="請輸入客戶姓名或客戶電話" th:value="${searchKeyword}">
-            <button class="btn btn-primary" type="submit">搜尋</button>
-        </div>
-    </form>
-
-    <!-- 搜索结果表格 -->
-    <table class="table">
+<div>
+    <h1>搜尋結果</h1>
+    <table>
         <thead>
         <tr>
-            <th scope="col">车牌号码</th>
-            <th scope="col">车主名称</th>
-            <th scope="col">公司名称</th>
-            <th scope="col">操作</th>
+            <th>車牌號碼</th>
+            <th>車主名稱</th>
+            <th>公司名稱</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="carRecord : ${carRecords}">
-            <td th:text="${carRecord.licensePlate}"></td>
-            <td th:text="${carRecord.ownerName}"></td>
-            <td th:text="${carRecord.companyName}"></td>
-            <td>
-                <!-- 这里可以添加一些操作按钮，例如查看、编辑等 -->
-                <a th:href="@{/car/edit(id=${carRecord.id})}" class="btn btn-warning btn-sm">编辑</a>
-            </td>
+        <tr th:each="record : ${carRecords.content}">
+            <td th:text="${record.licensePlate}"></td>
+            <td th:text="${record.ownerName}"></td>
+            <td th:text="${record.companyName}"></td>
         </tr>
         </tbody>
     </table>
-
-    <!-- 分页控制 -->
-    <nav aria-label="Page navigation">
-        <ul class="pagination justify-content-center">
-            <li class="page-item" th:class="${currentPage == 0} ? 'disabled' : ''">
-                <a class="page-link" th:href="@{/orderHistorySearch(searchKeyword=${searchKeyword}, page=${currentPage - 1})}">上一页</a>
-            </li>
-            <li class="page-item" th:each="pageNum : ${#numbers.sequence(0, totalPages - 1)}">
-                <a class="page-link" th:href="@{/orderHistorySearch(searchKeyword=${searchKeyword}, page=${pageNum})}" th:text="${pageNum + 1}"></a>
-            </li>
-            <li class="page-item" th:class="${currentPage == totalPages - 1} ? 'disabled' : ''">
-                <a class="page-link" th:href="@{/orderHistorySearch(searchKeyword=${searchKeyword}, page=${currentPage + 1})}">下一页</a>
-            </li>
-        </ul>
-    </nav>
 </div>
 </body>
 </html>
