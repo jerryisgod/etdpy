@@ -69,7 +69,7 @@ public class car {
             Model model) {
 
         Page<CarRecord> carRecords = customerService.searchCustomer(licensePlate, ownerName, companyName, pageable);
-        System.out.println("幹" + carRecords.getTotalElements());
+        System.out.println(carRecords.getTotalElements());
         model.addAttribute("carRecords", carRecords);
         model.addAttribute("licensePlate", licensePlate);
         model.addAttribute("ownerName", ownerName);
@@ -77,6 +77,6 @@ public class car {
 
         return "searchResults"; // 返回显示订单历史的页面
 
-}
+            }
 }
 

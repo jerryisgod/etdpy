@@ -55,12 +55,12 @@
     <thead>
     <tr>
         <th scope="col" style="border-bottom: 1px solid black;width: 5%;">No.</th>
-        <th scope="col" style="border-bottom: 1px solid black;width: 25%;">項目</th>
+        <th scope="col" style="border-bottom: 1px solid black;width: 35%;">項目</th>
         <th scope="col" style="border-bottom: 1px solid black;width: 10%;">數量</th>
-        <th scope="col" style="border-bottom: 1px solid black;width: 20%;">單價</th>
+        <th scope="col" style="border-bottom: 1px solid black;width: 10%;">單價</th>
         <th scope="col" style="border-bottom: 1px solid black;width: 10%;">工資</th>
         <th scope="col" style="border-bottom: 1px solid black;width: 10%;">折扣</th>
-        <th scope="col" style="border-bottom: 1px solid black;width: 20%;">金額</th>
+        <th scope="col" style="border-bottom: 1px solid black;width: 10%;">金額</th>
     </tr>
     </thead>
     <tbody>
@@ -367,11 +367,10 @@
                 折扣:<input type="text" value="" style="border: none;width: 100px;" />
             </div>
             <div>
-                小計:<input  class="total" type="text"  value="0" style="border: none;width: 150px;" />
+                小計:<input type="text" value="" style="border: none;width: 100px;" />
             </div>
             <div>
-                總計:<input class="total"  type="text"  id="total" value="0" style="border: none;width: 150px;" />
-                <span id="totalDisplay"></span>
+                總計:<input type="text"  id="total" value="" style="border: none;width: 100px;" />
             </div>
         </div>
         <div class="col-3">
@@ -382,56 +381,23 @@
     </div>
     <script>
         function updateTotal() {
-    // 计算当前页面的总金额
-    let total = 0;
-
-    document.querySelectorAll('.result').forEach(function(resultInput) {
-        total += parseFloat(resultInput.value) || 0;
-    });
-
-    // 更新总金额的输入框
-    const totalInputs = document.getElementsByClassName('total');
-    for (let i = 0; i < totalInputs.length; i++) {
-        totalInputs[i].value = total.toFixed(2);
-    }
-
-    // 将总计存入 localStorage
-    localStorage.setItem('totalAmount', total.toFixed(2));
-}
-
-// 监听输入事件
-document.addEventListener("input", function(e) {
-    if (e.target.classList.contains("input1") || e.target.classList.contains("input2")) {
-        const row = e.target.closest('tr');
-        const quantity = row.querySelector('.input1').value || 0;
-        const price = row.querySelector('.input2').value || 0;
-        const resultInput = row.querySelector('.result');
-        resultInput.value = (quantity * price).toFixed(2);
-
-        // 直接更新总金额为当前行的计算结果，而不是叠加
-        updateTotal(); // 更新总金额
-    }
-});
-
-// 页面加载时获取并显示存储的总计
-window.onload = function() {
-    const storedTotal = localStorage.getItem('totalAmount');
-    if (storedTotal) {
-        // 显示存储的总计
-        const totalInputs = document.getElementsByClassName('total');
-        for (let i = 0; i < totalInputs.length; i++) {
-            totalInputs[i].value = storedTotal; // 显示存储的总计
+            let total = 0;
+            document.querySelectorAll('.result').forEach(function(resultInput) {
+                total += parseFloat(resultInput.value) || 0;
+            });
+            document.getElementById('total').value = total.toFixed(2); // 保留两位小数
         }
-    }
-};
 
-window.addEventListener('beforeunload', function() {
-    localStorage.clear(); // 清除 Local Storage
-    sessionStorage.clear(); // 清除 Session Storage
-});
-
-
-
+        document.addEventListener("input", function(e) {
+            if (e.target.classList.contains("input1") || e.target.classList.contains("input2")) {
+                const row = e.target.closest('tr');
+                const quantity = row.querySelector('.input1').value || 0;
+                const price = row.querySelector('.input2').value || 0;
+                const resultInput = row.querySelector('.result');
+                resultInput.value = (quantity * price).toFixed(2); // 保留两位小数
+                updateTotal(); // 更新总计
+            }
+        });
     </script>
 </body>
 </html>

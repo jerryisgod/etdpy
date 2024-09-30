@@ -24,6 +24,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public Page<CarRecord> searchCustomer(String licensePlate, String ownerName, String companyName, Pageable pageable) {
+        System.out.println("Searching with licensePlate: " + licensePlate + ", ownerName: " + ownerName + ", companyName: " + companyName);
         return customerRepo.findByLicensePlateContainingIgnoreCaseOrOwnerNameContainingIgnoreCaseOrCompanyNameContainingIgnoreCase(
                 licensePlate, ownerName, companyName, pageable);
     }
