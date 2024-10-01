@@ -25,10 +25,12 @@
     </style>
 </head>
 <body>
+<div th:replace="~{header :: header}"></div>
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
             <form th:action="@{/orderHistorySearch}" method="get" class="mb-3">
+                <div th:replace="pages :: imageContent"></div>
             <!-- 輸入車牌號碼 -->
             <div class="input-group">
                 <label class="input-label w-100">輸入車牌號碼</label>
