@@ -11,6 +11,11 @@
 </head>
 <body>
 <div th:replace="~{header :: header}"></div>
+<div class="con">
+    <button class="no-border-button" onclick="window.location.href='search';">
+        <img src="images/undo.jpg" alt="上一頁" />
+    </button>
+</div>
 <div>
     <h2 style="text-align: center;">搜尋結果</h2>
     <table class="table table-bordered">
@@ -36,6 +41,9 @@
         </tr>
         </tbody>
     </table>
+    </div>
+    <div th:if="${message}" style="color: red; text-align: center; font-weight: bold;font-size: 50px;">
+    <p th:text="${message}">查無資料</p> <!-- 顯示查無資料的消息 -->
 </div>
 </body>
 </html>

@@ -69,11 +69,15 @@ public class car {
             Model model) {
 
         Page<CarRecord> carRecords = customerService.searchCustomer(licensePlate, ownerName, companyName, pageable);
-        System.out.println(carRecords.getTotalElements());
         model.addAttribute("carRecords", carRecords);
         model.addAttribute("licensePlate", licensePlate);
         model.addAttribute("ownerName", ownerName);
         model.addAttribute("companyName", companyName);
+
+        // 判断是否有搜索结果
+        if (carRecords.isEmpty()) {
+            model.addAttribute("message", "查無資料"); // 添加消息
+        }
 
         return "searchResults"; // 返回显示订单历史的页面
 

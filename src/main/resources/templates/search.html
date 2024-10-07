@@ -22,40 +22,73 @@
             background-color: #d3d3d3; /* 灰色背景 */
             border: 1px solid #ccc; /* 可选：给输入框加个边框 */
         }
+        .error-message {
+            color: red;
+            font-weight: bold;
+            display: none;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
 <div th:replace="~{header :: header}"></div>
+<div class="con">
+    <button class="no-border-button" onclick="window.location.href='index';">
+        <img src="images/undo.jpg" alt="上一頁" />
+    </button>
+    <button class="no-border-button" id="submitButton" type="button">
+        <img src="images/redo.jpg" alt="下一頁" />
+    </button>
+</div>
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <form th:action="@{/orderHistorySearch}" method="get" class="mb-3">
-                <div th:replace="pages :: imageContent"></div>
-            <!-- 輸入車牌號碼 -->
-            <div class="input-group">
-                <label class="input-label w-100">輸入車牌號碼</label>
-                <input type="text"  name="licensePlate" id="licensePlate" class="form-control form-control-lg" placeholder="" th:value="${searchKeyword}">
-            </div>
+            <form id="searchForm" th:action="@{/orderHistorySearch}" method="get" class="mb-3">
+                <!-- 輸入車牌號碼 -->
+                <div class="input-group">
+                    <label class="input-label w-100">輸入車牌號碼</label>
+                    <input type="text"  name="licensePlate" id="licensePlate" class="form-control form-control-lg" placeholder="" th:value="${searchKeyword}">
+                </div>
 
-            <!-- 輸入車主名稱 -->
-            <div class="input-group">
-                <label for="ownerName" class="input-label w-100">輸入車主名稱</label>
-                <input type="text"  name="ownerName" id="ownerName" class="form-control form-control-lg" placeholder="" th:value="${searchKeyword}">
-            </div>
+                <!-- 輸入車主名稱 -->
+                <div class="input-group">
+                    <label for="ownerName" class="input-label w-100">輸入車主名稱</label>
+                    <input type="text"  name="ownerName" id="ownerName" class="form-control form-control-lg" placeholder="" th:value="${searchKeyword}">
+                </div>
 
-            <!-- 輸入公司名稱 -->
-            <div class="input-group">
-                <label for="companyName" class="input-label w-100">輸入公司名稱</label>
-                <input type="text"  name="companyName" id="companyName" class="form-control form-control-lg" placeholder="" th:value="${searchKeyword}">
-            </div>
+                <!-- 輸入公司名稱 -->
+                <div class="input-group">
+                    <label for="companyName" class="input-label w-100">輸入公司名稱</label>
+                    <input type="text"  name="companyName" id="companyName" class="form-control form-control-lg" placeholder="" th:value="${searchKeyword}">
+                </div>
 
-            <!-- 搜尋按鈕 -->
-            <div class="text-center">
-                <button class="btn btn-primary" type="submit">搜尋</button>
-            </div>
+                <!-- 錯誤提示 -->
+                <div style="text-align: center;" id="error-message" class="error-message">
+                    請至少填寫一個欄位！
+                </div>
             </form>
         </div>
     </div>
 </div>
+
+<script>
+    const submitButton = document.getElementById("submitButton");
+    const searchForm = document.getElementById("searchForm");
+    const errorMessage = document.getElementById("error-message");
+
+    submitButton.addEventListener("click", function() {
+        const licensePlate = document.getElementById("licensePlate").value.trim();
+        const ownerName = document.getElementById("ownerName").value.trim();
+        const companyName = document.getElementById("companyName").value.trim();
+
+        if (licensePlate === "" && ownerName === "" && companyName === "") {
+            errorMessage.style.display = "block";
+        } else {
+            errorMessage.style.display = "none";
+            searchForm.submit();
+        }
+    });
+</script>
+
 </body>
 </html>

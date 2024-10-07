@@ -47,3 +47,19 @@
 	border-bottom: 2px solid #F8F9FA;
 	padding-bottom: 10px;
 }
+
+.con {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+        .con img {
+            width: 100px;
+            height: 50px;
+        }
+        .no-border-button {
+            background: none;
+            border: none;
+            padding: 0;
+            cursor: pointer;
