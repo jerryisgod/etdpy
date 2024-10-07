@@ -2,14 +2,32 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-</head>
-<body>
+<style>
+      .a4-container {
+          width: 21cm;
+          margin: 0 auto;
+          padding: 20px;
+      }
 
+
+      @media print {
+          .a4-container {
+              width: 21cm;
+              height: auto;
+          }
+      }
+
+</style>
+</head>
+<body class="a4-container body">
 <h1 style="text-align: center;">宇泰汽車</h1>
-<h3 style="text-align: center;">估價單</h3>
+<div style="text-align: center;">
+    <input type="text" value="估價單" style="text-align: center; font-size: 24px; border: none; outline: none; width: 200px;" />
+</div>
+
+
 
 <div style="text-align: right;">
     入廠日期: <input type="text" style="border: none;width: 100px;" />
@@ -27,25 +45,23 @@
 
 <div class="container-fluid" style="margin: 0; padding: 0;">
     <div class="row" style="margin: 0; padding: 0;">
-        <div class="col text-left" style="margin: 0; padding: 0;">
+        <div class="col-4 text-left" style="margin: 0; padding: 0;">
             <div style="margin: 0; padding: 0;">年份:<input type="text" style="border: none;width: 150px;" /></div>
             <div style="margin: 0; padding: 0;">廠牌:<input type="text" style="border: none;width: 150px;" /></div>
             <div style="margin: 0; padding: 0;">車型:<input type="text" style="border: none;width: 150px;" /></div>
             <div style="margin: 0; padding: 0;">排量:<input type="text" style="border: none;width: 150px;" /></div>
         </div>
-        <div class="col text-left" style="margin: 0; padding: 0;">
+        <div class="col-8 text-left" style="margin: 0; padding: 0;">
             <div style="margin: 0; padding: 0;">車牌號碼:<input type="text" style="border: none;width: 150px;" /></div>
-            <div style="margin: 0; padding: 0;">車身號碼:<input type="text" style="border: none;width: 150px;" /></div>
-        </div>
-        <div class="col text-center" style="margin: 0; padding: 0;">
-            <br>
-            <br>
-            <br>
-            <div style="margin: 0; padding: 0; text-align: right;">
-                頁數:<input type="text" value="1" style="border: none; width: 25px; display: inline-block; margin: 0;text-align: center;" />,共<input type="text" value="" style="border: none; width: 25px; display: inline-block; margin: 0; text-align: center;" />頁
+            <div style="margin: 0; padding: 0;">車身號碼:<input type="text" style="border: none;width: 300px;" /></div>
+                <br>
+                <br>
+                <br>
+                <div style="margin: 0; padding: 0; text-align: right;">
+                    頁數:<input type="text" value="1" style="border: none; width: 25px; display: inline-block; margin: 0;text-align: center;" />,共<input type="text" value="" style="border: none; width: 25px; display: inline-block; margin: 0; text-align: center;" />頁
+                </div>
             </div>
 
-        </div>
     </div>
 </div>
 
@@ -54,13 +70,13 @@
 <table class="table">
     <thead>
     <tr>
-        <th scope="col" style="border-bottom: 1px solid black;width: 5%;">No.</th>
-        <th scope="col" style="border-bottom: 1px solid black;width: 35%;">項目</th>
-        <th scope="col" style="border-bottom: 1px solid black;width: 10%;">數量</th>
-        <th scope="col" style="border-bottom: 1px solid black;width: 10%;">單價</th>
-        <th scope="col" style="border-bottom: 1px solid black;width: 10%;">工資</th>
-        <th scope="col" style="border-bottom: 1px solid black;width: 10%;">折扣</th>
-        <th scope="col" style="border-bottom: 1px solid black;width: 10%;">金額</th>
+        <th scope="col" style="border-bottom: 1px solid black;width:">No.</th>
+        <th scope="col" style="border-bottom: 1px solid black;width:35%;">項目</th>
+        <th scope="col" style="border-bottom: 1px solid black;width:">數量</th>
+        <th scope="col" style="border-bottom: 1px solid black;width:100px">單價</th>
+        <th scope="col" style="border-bottom: 1px solid black;width:100px">工資</th>
+        <th scope="col" style="border-bottom: 1px solid black;width:">折扣</th>
+        <th scope="col" style="border-bottom: 1px solid black;width:15%">金額</th>
     </tr>
     </thead>
     <tbody>
@@ -76,7 +92,7 @@
             <input type="number" class="input2" value="" style="border: none; width: 100%;"/>
         </td>
         <td style="border: none;">
-            <input type="text" value="" style="border: none; width: 100%;"/>
+            <input type="number" class="input3" value="" style="border: none; width: 100%;"/>
         </td>
         <td style="border: none;">
             <input type="text" value="" style="border: none; width: 100%;"/>
@@ -98,7 +114,7 @@
             <input type="number" class="input2" value="" style="border: none; width: 100%;"/>
         </td>
         <td style="border: none;">
-            <input type="text" value="" style="border: none; width: 100%;"/>
+            <input type="number"   class="input3"   value="" style="border: none; width: 100%;"/>
         </td>
         <td style="border: none;">
             <input type="text" value="" style="border: none; width: 100%;"/>
@@ -120,7 +136,7 @@
             <input type="number" class="input2" value="" style="border: none; width: 100%;"/>
         </td>
         <td style="border: none;">
-            <input type="text" value="" style="border: none; width: 100%;"/>
+            <input type="number"   class="input3"   value="" style="border: none; width: 100%;"/>
         </td>
         <td style="border: none;">
             <input type="text" value="" style="border: none; width: 100%;"/>
@@ -142,7 +158,7 @@
             <input type="number" class="input2" value="" style="border: none; width: 100%;"/>
         </td>
         <td style="border: none;">
-            <input type="text" value="" style="border: none; width: 100%;"/>
+            <input type="number"   class="input3"   value="" style="border: none; width: 100%;"/>
         </td>
         <td style="border: none;">
             <input type="text" value="" style="border: none; width: 100%;"/>
@@ -164,7 +180,7 @@
             <input type="number" class="input2" value="" style="border: none; width: 100%;"/>
         </td>
         <td style="border: none;">
-            <input type="text" value="" style="border: none; width: 100%;"/>
+            <input type="number"   class="input3"   value="" style="border: none; width: 100%;"/>
         </td>
         <td style="border: none;">
             <input type="text" value="" style="border: none; width: 100%;"/>
@@ -186,7 +202,7 @@
             <input type="number" class="input2" value="" style="border: none; width: 100%;"/>
         </td>
         <td style="border: none;">
-            <input type="text" value="" style="border: none; width: 100%;"/>
+            <input type="number"   class="input3"   value="" style="border: none; width: 100%;"/>
         </td>
         <td style="border: none;">
             <input type="text" value="" style="border: none; width: 100%;"/>
@@ -208,7 +224,7 @@
             <input type="number" class="input2" value="" style="border: none; width: 100%;"/>
         </td>
         <td style="border: none;">
-            <input type="text" value="" style="border: none; width: 100%;"/>
+            <input type="number"   class="input3"   value="" style="border: none; width: 100%;"/>
         </td>
         <td style="border: none;">
             <input type="text" value="" style="border: none; width: 100%;"/>
@@ -230,7 +246,7 @@
             <input type="number" class="input2" value="" style="border: none; width: 100%;"/>
         </td>
         <td style="border: none;">
-            <input type="text" value="" style="border: none; width: 100%;"/>
+            <input type="number" class="input3" value="" style="border: none; width: 100%;"/>
         </td>
         <td style="border: none;">
             <input type="text" value="" style="border: none; width: 100%;"/>
@@ -252,7 +268,7 @@
             <input type="number" class="input2" value="" style="border: none; width: 100%;"/>
         </td>
         <td style="border: none;">
-            <input type="text" value="" style="border: none; width: 100%;"/>
+            <input type="number"   class="input3"   value="" style="border: none; width: 100%;"/>
         </td>
         <td style="border: none;">
             <input type="text" value="" style="border: none; width: 100%;"/>
@@ -274,7 +290,7 @@
             <input type="number" class="input2" value="" style="border: none; width: 100%;"/>
         </td>
         <td style="border: none;">
-            <input type="text" value="" style="border: none; width: 100%;"/>
+            <input type="number" class="input3" value="" style="border: none; width: 100%;"/>
         </td>
         <td style="border: none;">
             <input type="text" value="" style="border: none; width: 100%;"/>
@@ -296,7 +312,7 @@
             <input type="number" class="input2" value="" style="border: none; width: 100%;"/>
         </td>
         <td style="border: none;">
-            <input type="text" value="" style="border: none; width: 100%;"/>
+            <input type="number" class="input3" value="" style="border: none; width: 100%;"/>
         </td>
         <td style="border: none;">
             <input type="text" value="" style="border: none; width: 100%;"/>
@@ -318,7 +334,7 @@
             <input type="number" class="input2" value="" style="border: none; width: 100%;"/>
         </td>
         <td style="border: none;">
-            <input type="text" value="" style="border: none; width: 100%;"/>
+            <input type="number" class="input3" value="" style="border: none; width: 100%;"/>
         </td>
         <td style="border: none;">
             <input type="text" value="" style="border: none; width: 100%;"/>
@@ -327,7 +343,6 @@
             <input type="text"  class="result" value="" style="border: none; width: 100%;"/>
         </td>
     </tr>
-
     <tr>
         <td style="border: none;">13.</td>
         <td style="border: none;">
@@ -340,7 +355,28 @@
             <input type="number" class="input2" value="" style="border: none; width: 100%;"/>
         </td>
         <td style="border: none;">
+            <input type="number" class="input3" value="" style="border: none; width: 100%;"/>
+        </td>
+        <td style="border: none;">
             <input type="text" value="" style="border: none; width: 100%;"/>
+        </td>
+        <td style="border: none;">
+            <input type="text"  class="result" value="" style="border: none; width: 100%;"/>
+        </td>
+    </tr>
+    <tr>
+        <td style="border: none;">14.</td>
+        <td style="border: none;">
+            <input type="text" value="" style="border: none; width: 100%;"/>
+        </td>
+        <td style="border: none;">
+            <input type="number" class="input1" value="" style="border: none; width: 100%;"/>
+        </td>
+        <td style="border: none;">
+            <input type="number" class="input2" value="" style="border: none; width: 100%;"/>
+        </td>
+        <td style="border: none;">
+            <input type="number" class="input3" value="" style="border: none; width: 100%;"/>
         </td>
         <td style="border: none;">
             <input type="text" value="" style="border: none; width: 100%;"/>
@@ -354,50 +390,81 @@
 </table>
 
 
-<div class="container-fluid border border-dark w-100 p-3">
+<div class="container-fluid border border-dark">
     <div class="row">
-        <div class="col-6">
-            <label for="remarks" class="form-label">備註:</label>
-            <textarea id="remarks" rows="2" class="form-control" style="resize: none;"></textarea>
-            <p style="font-size: 0.6em;">注意:因零件價格波動，此估價有效時限為估價日15天內</p>
+        <div class="col-5">
+            <div style="margin: 0; padding: 10px; border: 0px solid #ccc; border-radius: 5px; background-color: #f9f9f9;">
+                <label for="remarks" style="font-weight: bold;">備註:</label>
+                <textarea id="remarks" rows="2" style="width: 100%; border: none; resize: none; padding: 5px;" placeholder=""></textarea>
+            </div>
+            <input type="text" value="注意:因零件價格波動，此估價有效時限為估價日15天內"  style="font-size: 0.6em;border: none;width: 100%;">
         </div>
-        <div class="col-3">
+
+        <div class="col-5">
             <br>
             <div>
-                折扣:<input type="text" value="" style="border: none;width: 100px;" />
+                小計:<input  class="total" type="text"  value="" style="border: none;width: 150px;" />
             </div>
             <div>
-                小計:<input type="text" value="" style="border: none;width: 100px;" />
+                折扣:<input type="text" value="" style="border: none;width: 150px;" />
             </div>
             <div>
-                總計:<input type="text"  id="total" value="" style="border: none;width: 100px;" />
+                總計:<input  type="text"  value="" style="border: none;width: 150px;" />
             </div>
         </div>
-        <div class="col-3">
+
+        <div class="col-2">
             <div class="stamp-container mt-3" style="border: 2px dashed #ccc; padding: 20px; text-align: center; width: 100px; height:100px; margin: auto;">
                 <p style="margin: 0; line-height: 100px;"></p>
             </div>
-        </div>
-    </div>
-    <script>
-        function updateTotal() {
-            let total = 0;
-            document.querySelectorAll('.result').forEach(function(resultInput) {
-                total += parseFloat(resultInput.value) || 0;
-            });
-            document.getElementById('total').value = total.toFixed(2); // 保留两位小数
-        }
 
-        document.addEventListener("input", function(e) {
-            if (e.target.classList.contains("input1") || e.target.classList.contains("input2")) {
-                const row = e.target.closest('tr');
-                const quantity = row.querySelector('.input1').value || 0;
-                const price = row.querySelector('.input2').value || 0;
-                const resultInput = row.querySelector('.result');
-                resultInput.value = (quantity * price).toFixed(2); // 保留两位小数
-                updateTotal(); // 更新总计
+        </div>
+
+    </div>
+</div>
+<script>
+    function updateTotal() {
+        let total = 0;
+
+
+        document.querySelectorAll('tbody tr').forEach(function(row) {
+            const quantity = parseFloat(row.querySelector('.input1').value) || 0;
+            const price = parseFloat(row.querySelector('.input2').value) || 0;
+            const additionalValue = parseFloat(row.querySelector('.input3').value) || 0;
+
+
+            const rowResult = (quantity * price) + additionalValue;
+            const resultInput = row.querySelector('.result');
+
+
+            if (quantity > 0 || price > 0 || additionalValue > 0) {
+                if (resultInput) {
+                    resultInput.value = rowResult;
+                }
+            } else {
+                if (resultInput) {
+                    resultInput.value = '';
+                }
             }
+
+            total += rowResult;
         });
-    </script>
+
+
+        const totalInputs = document.getElementsByClassName('total');
+        for (let i = 0; i < totalInputs.length; i++) {
+            totalInputs[i].value = total;
+        }
+    }
+
+    document.addEventListener("input", function(e) {
+        if (e.target.classList.contains("input1") || e.target.classList.contains("input2") || e.target.classList.contains("input3")) {
+            updateTotal();
+        }
+    });
+
+
+
+</script>
 </body>
 </html>
