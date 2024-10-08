@@ -3,9 +3,9 @@ package com.etdpy.controller;
 import com.etdpy.dao.CarRecordRepo;
 import com.etdpy.entity.CarRecord;
 import com.etdpy.service.CustomerService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.validation.BindingResult;
+
 
 @Controller
 public class car {
@@ -25,19 +27,22 @@ public class car {
         this.customerService = customerService;
     }
 
-    @GetMapping("/car-records/car")
+    @GetMapping("/addCustomer")
     public String showCarRecordForm(Model model) {
         model.addAttribute("carRecord", new CarRecord());
-        return "car"; // Thymeleaf 页面名
+        return "addCustomer"; //
     }
 
-    @PostMapping("/car/record/save")
-    public String saveCarRecord(@ModelAttribute CarRecord carRecord) {
-        carRecordRepo.save(carRecord); // 保存到数据库
-        return "redirect:/car/record/success"; // 成功后重定向到成功页面
+    @PostMapping("/SaveCustomer")
+    public String saveCarRecord(@Valid @ModelAttribute CarRecord carRecord, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            return "addCustomer";
+        }
+        carRecordRepo.save(carRecord);
+        return "redirect:/SaveCustomerSuccess";
     }
 
-    @GetMapping("/car/record/success")
+    @GetMapping("/SaveCustomerSuccess")
     public String showSuccessPage() {
         return "saveSuccess"; // 成功页面
     }
@@ -45,7 +50,7 @@ public class car {
     @GetMapping("/customerList")
     public String getCustomerList(Model model,
                                   @RequestParam(defaultValue = "0") int page,
-                                  @RequestParam(defaultValue = "5") int size) {
+                                  @RequestParam(defaultValue = "10") int size) {
         Page<CarRecord> carRecordsPage = customerService.getPaginatedCustomerList(page, size);
 
         model.addAttribute("carRecords", carRecordsPage.getContent());

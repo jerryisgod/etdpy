@@ -1,6 +1,8 @@
 package com.etdpy.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+
 import java.io.Serializable;
 
 @Entity
@@ -12,6 +14,7 @@ public class CarRecord implements Serializable {
 
     private int year;  // 年份
     private String brand;  // 廠牌
+    @NotBlank(message = "車型不能為空")
     private String model;  // 車型
     private String engineCapacity;  // 排量
     private String fuelType;  // 燃料
@@ -19,8 +22,11 @@ public class CarRecord implements Serializable {
     private String style;  // 樣式
     private String engineNumber;  // 引擎號碼
     private String VIN;           //車身號碼
+    @NotBlank(message = "車牌號碼不能為空")
     private String licensePlate;  // 車牌號碼
+    @NotBlank(message = "車主名稱不能為空")
     private String ownerName;  // 車主名稱
+    @NotBlank(message = "車主電話不能為空")
     private String ownerPhone;  // 車主電話
     private String ownerLandline;  // 車主市話
     private String backupPhone;  // 備用連絡電話
