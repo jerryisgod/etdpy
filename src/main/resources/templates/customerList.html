@@ -16,7 +16,6 @@
     <table class="table table-bordered">
         <thead>
         <tr>
-            <th>編號</th>
             <th>車牌</th>
             <th>車主</th>
             <th>公司</th>
@@ -27,7 +26,6 @@
         <tbody>
         <tr>
         <tr th:each="carRecords : ${carRecords}">
-            <td th:text="${carRecords.id}"></td>
             <td th:text="${carRecords.licensePlate}"></td>
             <td th:text="${carRecords.ownerName}"></td>
             <td th:text="${carRecords.companyName}"></td>

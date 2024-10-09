@@ -62,11 +62,8 @@ public class car {
         return "redirect:/SaveCustomerSuccess";
     }
 
-    @GetMapping("/SaveCustomerSuccess")
-    public String showSuccessPage() {
-        return "saveSuccess"; // 成功页面
-    }
     private final CustomerService customerService;
+
     @GetMapping("/customerList")
     public String getCustomerList(Model model,
                                   @RequestParam(defaultValue = "0") int page,
@@ -138,19 +135,19 @@ public class car {
         return switch (action) {
             case "modify" -> {
                 carRecordRepo.save(carRecord); // 保存修改
-                yield "redirect:/SaveCustomerSuccess"; // 保存修改
+                yield "redirect:/saveSuccess1"; // 保存修改
             }
             case "repair" -> {
                 model.addAttribute("carRecord", carRecord); // 将 carRecord 添加到模型中以供查询
                 // 可以添加逻辑来查询维修记录
-                yield "repairRecord"; // 将 carRecord 添加到模型中以供查询
+                yield "maintenance"; // 将 carRecord 添加到模型中以供查询
                 // 可以添加逻辑来查询维修记录
             }
             case "delete" -> {
                 carRecordRepo.delete(carRecord); // 删除记录
-                yield "redirect:/DeleteSuccess"; // 删除记录
+                yield "redirect:/saveSuccess2"; // 删除记录
             }
-            default -> "redirect:/error"; // 未知操作时重定向到错误页面
+            default -> "redirect:/maintenance"; // 未知操作时重定向到错误页面
         };
     }
 
