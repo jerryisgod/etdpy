@@ -9,7 +9,7 @@ import jakarta.persistence.Table;
 
 
 @Entity
-@Table(name = "members") // 映射到 MySQL 中的 "members" 表
+@Table(name = "sh_members") // 映射到 MySQL 中的 "members" 表
 public class MemberPo {
 
     @Id

@@ -16,6 +16,7 @@
     <table class="table table-bordered">
         <thead>
         <tr>
+            <th>編號</th>
             <th>車牌</th>
             <th>車主</th>
             <th>公司</th>
@@ -26,15 +27,16 @@
         <tbody>
         <tr>
         <tr th:each="carRecords : ${carRecords}">
+            <td th:text="${carRecords.id}"></td>
             <td th:text="${carRecords.licensePlate}"></td>
             <td th:text="${carRecords.ownerName}"></td>
             <td th:text="${carRecords.companyName}"></td>
             <td th:text="${carRecords.model}"></td>
             <td>
-                <form method="post">
-                    <input type="hidden" name="id" />
+                    <form th:action="@{/detailsCustomer}" method="post">
+                        <input type="hidden" name="id" th:value="${carRecords.id}" />
                     <button type="submit" class="link-bold-underline" style="background: none; border: none; color: #007bff; padding: 0; cursor: pointer;">查看詳細</button>
-                </form>
+                   </form>
             </td>
         </tr>
         </tbody>

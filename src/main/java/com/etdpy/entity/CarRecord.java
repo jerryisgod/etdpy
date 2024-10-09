@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotBlank;
 import java.io.Serializable;
 
 @Entity
+@Table(name = "sh_CarRecord")
 public class CarRecord implements Serializable {
 
     @Id

@@ -2,22 +2,15 @@ package com.etdpy.entity;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDateTime;
-import java.util.Date;
 
 @Entity
-@Table(name = "sh_LoginRecord")
-public class LoginRecord {
+@Table(name = "sh_Brand")
+public class Brand {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // 使用自增策略
-    @Column(name = "id")
     private Long id;
-
     private String username;
-    @Temporal(TemporalType.TIMESTAMP) // 指定精确到时间戳
-    private Date loginTime;
-
 
     public Long getId() {
         return id;
@@ -35,20 +28,11 @@ public class LoginRecord {
         this.username = username;
     }
 
-    public Date getLoginTime() {
-        return loginTime;
-    }
-
-    public void setLoginTime(Date loginTime) {
-        this.loginTime = loginTime;
-    }
-
     @Override
     public String toString() {
-        return "LoginRecord{" +
+        return "Brand{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
-                ", loginTime=" + loginTime +
                 '}';
     }
 }

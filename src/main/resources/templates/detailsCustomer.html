@@ -22,12 +22,10 @@
     <button class="no-border-button" onclick="window.location.href='index';">
         <img src="images/undo.jpg" alt="上一頁" />
     </button>
-    <button class="no-border-button"  id="externalSubmitButton" type="button" >
-        <img src="images/redo.jpg" alt="下一頁" />
-    </button>
 </div>
 <div class="container-fluid">
-    <form id="myForm" th:action="@{/SaveCustomer}" th:object="${carRecord}" method="post">
+    <form id="myForm" th:action="@{/SaveCustomer1}" th:object="${carRecord}" method="post">
+        <input type="hidden" th:field="*{id}"/> <!-- 假设你的 CarRecord 有 id 字段 -->
         <div class="form-group row mb-1 align-items-center">
             <label for="year" class="col-2 col-form-label">年份</label>
             <div class="col-4">
@@ -35,7 +33,7 @@
             </div>
             <label for="brand" class="col-1 col-form-label">廠牌</label>
             <div class="col-4">
-                <input list="brands" id="brand" th:field="*{brand}" class="form-control"/>
+                <input list="brands" id="brand" th:field="*{brand}" class="form-control" />
                 <datalist id="brands">
                     <option th:each="brand : ${brands}" th:value="${brand.username}" th:text="${brand.username}"></option>
                 </datalist>
@@ -45,16 +43,16 @@
 
 
         <div class="form-group row mb-1 align-items-center">
-                <label for="model" class="col-2 col-form-label">車型</label>
-                <div class="col-4">
-                    <input type="text" id="model" th:field="*{model}" class="form-control"/>
-                    <span th:errors="*{model}" style="color: red;font-weight: bold;">錯誤信息</span>
-                </div>
-                <label for="engineCapacity" class="col-1 col-form-label">排量</label>
-                <div class="col-4">
-                    <input type="text" id="engineCapacity" th:field="*{engineCapacity}" class="form-control"/>
-                </div>
+            <label for="model" class="col-2 col-form-label">車型</label>
+            <div class="col-4">
+                <input type="text" id="model" th:field="*{model}" class="form-control"/>
+                <span th:errors="*{model}" style="color: red;font-weight: bold;">錯誤信息</span>
             </div>
+            <label for="engineCapacity" class="col-1 col-form-label">排量</label>
+            <div class="col-4">
+                <input type="text" id="engineCapacity" th:field="*{engineCapacity}" class="form-control"/>
+            </div>
+        </div>
 
 
         <div class="form-group row mb-1 align-items-center">
@@ -96,7 +94,7 @@
         </div>
 
         <div class="form-group row mb-1 align-items-center">
-                <label for="licensePlate" class="col-2 col-form-label">車牌號碼</label>
+            <label for="licensePlate" class="col-2 col-form-label">車牌號碼</label>
             <div class="col-9">
                 <input type="text" id="licensePlate" th:field="*{licensePlate}" class="form-control" />
                 <span th:errors="*{licensePlate}" style="color: red;font-weight: bold;">錯誤信息</span>
@@ -106,7 +104,7 @@
         <div class="form-group row mb-1 align-items-center">
             <label for="ownerName" class="col-2 col-form-label">車主名稱</label>
             <div class="col-9">
-                <input type="text" id="ownerName" th:field="*{ownerName}" class="form-control" />
+                <input type="text" id="ownerName" th:field="*{ownerName}" class="form-control"/>
                 <span th:errors="*{ownerName}" style="color: red;font-weight: bold;">錯誤信息</span>
             </div>
         </div>
@@ -160,18 +158,15 @@
                 <textarea id="notes" th:field="*{notes}" class="form-control"></textarea>
             </div>
         </div>
+        <div class="form-group row mb-1 align-items-center">
+            <div class="text-center">
+                <button type="submit" name="action" value="modify" class="btn btn-info btn-lg m-3" style="width: 200px; height: 100px; font-size: 30px; font-weight: bold;">修改資料</button>
+                <button type="submit" name="action" value="repair" class="btn btn-info btn-lg m-3" style="width: 200px; height: 100px; font-size: 30px; font-weight: bold;">維修紀錄</button>
+                <button type="submit" name="action" value="delete" class="btn btn-info btn-lg m-3" style="width: 200px; height: 100px; font-size: 30px; font-weight: bold;">刪除客戶</button>
+            </div>
+        </div>
+
     </form>
 </div>
 </body>
-<script>
-    // 获取表单和外部按钮
-     const form = document.getElementById('myForm');
-     const externalSubmitButton = document.getElementById('externalSubmitButton');
-
-     // 监听外部按钮的点击事件
-     externalSubmitButton.addEventListener('click', function() {
-         // 手动触发表单提交
-         form.submit();
-     });
-</script>
 </html>

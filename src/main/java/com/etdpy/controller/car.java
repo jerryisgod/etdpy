@@ -1,8 +1,13 @@
 package com.etdpy.controller;
 
 import com.etdpy.dao.CarRecordRepo;
+import com.etdpy.entity.Brand;
 import com.etdpy.entity.CarRecord;
+import com.etdpy.entity.fuelType;
+import com.etdpy.service.BrandService;
+import com.etdpy.service.CarRecordService;
 import com.etdpy.service.CustomerService;
+import com.etdpy.service.fuelTypeService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -10,11 +15,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.validation.BindingResult;
+
+import java.util.List;
 
 
 @Controller
@@ -22,6 +26,13 @@ public class car {
 
     @Autowired
     private CarRecordRepo carRecordRepo;
+    @Autowired
+    private BrandService brandService;
+    @Autowired
+    private fuelTypeService fueltypeService;
+    @Autowired
+    private CarRecordService carrecordService;
+
 
     public car(CustomerService customerService) {
         this.customerService = customerService;
@@ -29,13 +40,22 @@ public class car {
 
     @GetMapping("/addCustomer")
     public String showCarRecordForm(Model model) {
+        List<Brand> brands = brandService.findAll();
+        List<fuelType> fuelTypes=fueltypeService.findAll();
         model.addAttribute("carRecord", new CarRecord());
+        model.addAttribute("brands", brands);
+        model.addAttribute("fuelTypes", fuelTypes);
+        System.out.print("幹"+fuelTypes);
         return "addCustomer"; //
     }
 
     @PostMapping("/SaveCustomer")
     public String saveCarRecord(@Valid @ModelAttribute CarRecord carRecord, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
+            List<Brand> brands = brandService.findAll();
+            List<fuelType> fuelTypes = fueltypeService.findAll();
+            model.addAttribute("brands", brands);
+            model.addAttribute("fuelTypes", fuelTypes);
             return "addCustomer";
         }
         carRecordRepo.save(carRecord);
@@ -87,5 +107,52 @@ public class car {
         return "searchResults"; // 返回显示订单历史的页面
 
             }
+
+    @PostMapping("/detailsCustomer")
+    public String getBrandById(@RequestParam("id") Long id, Model model) {
+        List<Brand> brands = brandService.findAll();
+        List<fuelType> fuelTypes = fueltypeService.findAll();
+        CarRecord carRecord = carrecordService.findById(id);
+        model.addAttribute("carRecord", carRecord);
+        model.addAttribute("brands", brands);
+        model.addAttribute("fuelTypes", fuelTypes);
+        return "detailsCustomer";
+    }
+    @PostMapping("/SaveCustomer1")
+    public String saveCarRecord1(
+            @Valid @ModelAttribute CarRecord carRecord,
+            BindingResult bindingResult,
+            Model model,
+            @RequestParam("action") String action) {
+
+        // 处理表单验证错误
+        if (bindingResult.hasErrors()) {
+            List<Brand> brands = brandService.findAll();
+            List<fuelType> fuelTypes = fueltypeService.findAll();
+            model.addAttribute("brands", brands);
+            model.addAttribute("fuelTypes", fuelTypes);
+            return "detailsCustomer"; // 返回表单页面，显示错误信息
+        }
+
+        // 根据不同的操作进行处理
+        return switch (action) {
+            case "modify" -> {
+                carRecordRepo.save(carRecord); // 保存修改
+                yield "redirect:/SaveCustomerSuccess"; // 保存修改
+            }
+            case "repair" -> {
+                model.addAttribute("carRecord", carRecord); // 将 carRecord 添加到模型中以供查询
+                // 可以添加逻辑来查询维修记录
+                yield "repairRecord"; // 将 carRecord 添加到模型中以供查询
+                // 可以添加逻辑来查询维修记录
+            }
+            case "delete" -> {
+                carRecordRepo.delete(carRecord); // 删除记录
+                yield "redirect:/DeleteSuccess"; // 删除记录
+            }
+            default -> "redirect:/error"; // 未知操作时重定向到错误页面
+        };
+    }
+
 }
 
