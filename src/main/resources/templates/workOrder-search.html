@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S.h SHOP</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <style>
+        .input-label {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .input-group {
+            margin-bottom: 20px;
+        }
+        .form-control-gray {
+            background-color: #d3d3d3; /* 灰色背景 */
+            border: 1px solid #ccc; /* 可选：给输入框加个边框 */
+        }
+        .error-message {
+            color: red;
+            font-weight: bold;
+            display: none;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<div th:replace="~{header :: header}"></div>
+<div class="container-fluid ">
+    <div class="row">
+        <!-- 左侧导航栏 -->
+        <div class="col-md-2 sidebar">
+            <button type="button" class="btn btn-info btn-lg dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                新增工單
+            </button>
+            <ul class="dropdown-menu text-center">
+                <li><a class="dropdown-item" href="#">估價單</a></li>
+                <li><a class="dropdown-item" href="#">維修單</a></li>
+            </ul>
+            <button type="button" class="btn btn-info btn-lg dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                客戶資訊
+            </button>
+            <ul class="dropdown-menu text-center">
+                <li><a class="dropdown-item" href="customerList">目錄</a></li>
+                <li><a class="dropdown-item" href="search">搜尋</a></li>
+                <li><a class="dropdown-item" href="addCustomer">新增</a></li>
+            </ul>
+            <button class="btn btn-info btn-lg">帳目管理</button>
+            <button class="btn btn-info btn-lg">維修紀錄</button>
+            <button class="btn btn-info btn-lg">系統設定</button>
+        </div>
+        <!-- 中间内容区 -->
+        <div class="col-md-10 d-flex justify-content-center align-items-center" style="height: 600px;">
+            <form th:action="@{/searchLicensePlate}" method="get">
+                <label class="input-label w-100 text-center" style="font-size: 50px;">輸入車牌號碼</label>
+                <input type="text" name="licensePlate" id="licensePlate" class="form-control"
+                       style="height: 100px; font-size: 50px; text-align: center; padding-left: 0; padding-right: 0;">
+                <div class="text-center">
+                    <button type="submit" class="btn btn-info btn-lg m-3" style="width: 200px; height: 100px; font-size: 30px; font-weight: bold;">下一步</button>
+                </div>
+                <p th:text="${errorMessage}" class="text-center text-danger"></p>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

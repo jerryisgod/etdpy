@@ -1,6 +1,7 @@
 package com.etdpy.dao;
 
 import com.etdpy.entity.CarRecord;
+import com.etdpy.entity.LoginRecord;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -8,12 +9,12 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface CustomerRepo extends JpaRepository<CarRecord, Long> {
-    //撈全部客戶資料
     Page<CarRecord> findAll(Pageable pageable);
 
-    //根據車牌號碼或車主名稱或公司名稱進行模糊查詢
     Page<CarRecord> findByLicensePlateContainingIgnoreCaseOrOwnerNameContainingIgnoreCaseOrCompanyNameContainingIgnoreCase(String licensePlate, String ownerName,String companyName, Pageable pageable);
 
 
@@ -26,5 +27,8 @@ public interface CustomerRepo extends JpaRepository<CarRecord, Long> {
             @Param("ownerName") String ownerName,
             @Param("companyName") String companyName,
             Pageable pageable);
+
+    // 完全匹配查询
+    List<CarRecord> findByLicensePlate(String licensePlate);
 
 }

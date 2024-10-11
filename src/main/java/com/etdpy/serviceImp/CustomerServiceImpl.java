@@ -10,6 +10,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 public class CustomerServiceImpl implements CustomerService {
 
@@ -25,6 +27,11 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public Page<CarRecord> searchCustomer(String licensePlate, String ownerName, String companyName, Pageable pageable) {
         return customerRepo.searchByConditions(licensePlate, ownerName, companyName, pageable);
+    }
+
+    @Override
+    public List<CarRecord> findByLicensePlate(String licensePlate) {
+        return customerRepo.findByLicensePlate(licensePlate);
     }
 
 
