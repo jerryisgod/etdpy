@@ -1,4 +1,6 @@
 package com.etdpy.controller;
+import com.etdpy.dao.CategoryRepo;
+import com.etdpy.dao.ItemRepo;
 import com.etdpy.entity.CarRecord;
 import com.etdpy.entity.LoginRecord;
 import com.etdpy.service.CustomerService;
@@ -20,6 +22,10 @@ import java.util.List;
 public class workOrder {
     @Autowired
     CustomerService customerService;
+    @Autowired
+    private CategoryRepo categoryRepo;
+    @Autowired
+    private ItemRepo itemRepo;
 
     @GetMapping("/workOrder-search")
     public String workOrderSearch() {
@@ -36,6 +42,8 @@ public class workOrder {
         }
 
         model.addAttribute("result", result);
+        model.addAttribute("categories", categoryRepo.findAll());  // 加载类别列表
+        model.addAttribute("items", itemRepo.findAll());            // 加载项目列表
         return "workOrder-showForm";
     }
 }

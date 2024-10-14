@@ -1,6 +1,8 @@
 package com.etdpy.controller;
 
+import com.etdpy.dao.BrandRepo;
 import com.etdpy.dao.CarRecordRepo;
+import com.etdpy.dao.fuelTypeRepo;
 import com.etdpy.entity.Brand;
 import com.etdpy.entity.CarRecord;
 import com.etdpy.entity.fuelType;
@@ -27,9 +29,9 @@ public class car {
     @Autowired
     private CarRecordRepo carRecordRepo;
     @Autowired
-    private BrandService brandService;
+    private BrandRepo brandRepo;
     @Autowired
-    private fuelTypeService fueltypeService;
+    private fuelTypeRepo fueltypeRepo;
     @Autowired
     private CarRecordService carrecordService;
 
@@ -40,22 +42,17 @@ public class car {
 
     @GetMapping("/addCustomer")
     public String showCarRecordForm(Model model) {
-        List<Brand> brands = brandService.findAll();
-        List<fuelType> fuelTypes=fueltypeService.findAll();
         model.addAttribute("carRecord", new CarRecord());
-        model.addAttribute("brands", brands);
-        model.addAttribute("fuelTypes", fuelTypes);
-        System.out.print("幹"+fuelTypes);
+        model.addAttribute("brands", brandRepo.findAll());
+        model.addAttribute("fuelTypes", fueltypeRepo.findAll());
         return "addCustomer"; //
     }
 
     @PostMapping("/SaveCustomer")
     public String saveCarRecord(@Valid @ModelAttribute CarRecord carRecord, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
-            List<Brand> brands = brandService.findAll();
-            List<fuelType> fuelTypes = fueltypeService.findAll();
-            model.addAttribute("brands", brands);
-            model.addAttribute("fuelTypes", fuelTypes);
+            model.addAttribute("brands", brandRepo.findAll());
+            model.addAttribute("fuelTypes", fueltypeRepo.findAll());
             return "addCustomer";
         }
         carRecordRepo.save(carRecord);
@@ -107,12 +104,10 @@ public class car {
 
     @PostMapping("/detailsCustomer")
     public String getBrandById(@RequestParam("id") Long id, Model model) {
-        List<Brand> brands = brandService.findAll();
-        List<fuelType> fuelTypes = fueltypeService.findAll();
         CarRecord carRecord = carrecordService.findById(id);
         model.addAttribute("carRecord", carRecord);
-        model.addAttribute("brands", brands);
-        model.addAttribute("fuelTypes", fuelTypes);
+        model.addAttribute("brands", brandRepo.findAll());
+        model.addAttribute("fuelTypes", fueltypeRepo.findAll());
         return "detailsCustomer";
     }
     @PostMapping("/SaveCustomer1")
@@ -124,10 +119,8 @@ public class car {
 
         // 处理表单验证错误
         if (bindingResult.hasErrors()) {
-            List<Brand> brands = brandService.findAll();
-            List<fuelType> fuelTypes = fueltypeService.findAll();
-            model.addAttribute("brands", brands);
-            model.addAttribute("fuelTypes", fuelTypes);
+            model.addAttribute("brands", brandRepo.findAll());
+            model.addAttribute("fuelTypes", fueltypeRepo.findAll());
             return "detailsCustomer"; // 返回表单页面，显示错误信息
         }
 
