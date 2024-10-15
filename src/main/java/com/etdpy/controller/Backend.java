@@ -9,10 +9,14 @@ import com.etdpy.entity.Item;
 import com.etdpy.entity.fuelType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.List;
 
 
 @Controller
@@ -27,45 +31,60 @@ public class Backend {
 	@Autowired
 	private fuelTypeRepo fueltypeRepo;
 
+	@Transactional
 	@GetMapping("/dashboard")
 	public String showDashboard(Model model) {
-		model.addAttribute("categories", categoryRepo.findAll());
-		model.addAttribute("items", itemRepo.findAll());
-		return "backEnd/dashboard";  // 返回 dashboard.html 页面
+		List<Category> categories = categoryRepo.findAll();
+		List<Item> items = itemRepo.findAll(); // 获取所有 Item
+		model.addAttribute("categories", categories);
+		model.addAttribute("items", items); // 将 items 添加到模型
+		return "backEnd/dashboard";
 	}
 	@GetMapping("/brandList")
 	public String showBrands(Model model) {
-		model.addAttribute("brands", brandRepo.findAll());
-		return "backEnd/brandList";  // 返回 dashboard.html 页面
+		List<Brand> brands = brandRepo.findAll();
+		System.out.println("Brands: " + brands);  // Debug line
+		model.addAttribute("brands", brands);
+		return "backEnd/brandList";
+
 	}
 	@GetMapping("/fuelTypesList")
 	public String showFuelTypes(Model model) {
 		model.addAttribute("fuelTypes", fueltypeRepo.findAll());
-		return "backEnd/fuelTypesList";  // 返回 dashboard.html 页面
+		return "backEnd/fuelTypesList";
 	}
 
 	// 保存类别
 	@PostMapping("/category/save")
-	public String saveCategory(Category category) {
+	public String saveCategory(Category category, RedirectAttributes redirectAttributes) {
+		if (categoryRepo.existsByName(category.getName())) {
+			redirectAttributes.addFlashAttribute("errorMessage", "類別已存在");
+			return "redirect:/dashboard";
+		}
 		categoryRepo.save(category);
+		redirectAttributes.addFlashAttribute("okMessage", "類別已新增");
 		return "redirect:/dashboard";
 	}
 
 	@PostMapping("/item/save")
-	public String saveItem(@RequestParam String itemName, @RequestParam Long categoryId) {
-		// 查找分类
+	public String saveItem(@RequestParam String itemName, @RequestParam Long categoryId, RedirectAttributes redirectAttributes) {
+		if (itemRepo.existsByName(itemName)) {
+			redirectAttributes.addFlashAttribute("errorMessage", "項目已存在");
+			return "redirect:/dashboard";
+		}
+
 		Category category = categoryRepo.findById(categoryId)
 				.orElseThrow(() -> new RuntimeException("Category not found with id " + categoryId));
 
-		// 创建新的 Item 实例
 		Item item = new Item();
 		item.setName(itemName);
-		item.setCategory(category); // 设置 Category
+		item.setCategory(category);
 
-		// 保存 Item 实例
 		itemRepo.save(item);
+		redirectAttributes.addFlashAttribute("okMessage", "項目已新增");
 		return "redirect:/dashboard";
 	}
+
 
 
 	// 保存廠牌
@@ -78,7 +97,7 @@ public class Backend {
 	@PostMapping("/fuelType/save")
 	public String saveFuelType(fuelType fueltype) {
 		fueltypeRepo.save(fueltype);
-		return "redirect:/backEnd//fuelTypesList";
+		return "redirect:/fuelTypesList";
 	}
 	// 删除类别
 	@PostMapping("/category/delete")
