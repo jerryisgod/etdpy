@@ -45,11 +45,13 @@
     <h4 class="mt-4">新增廠牌</h4>
     <form th:action="@{/brand/save}" method="post">
         <div class="form-group">
-            <input type="text" class="form-control" id="brandName" name="username" placeholder="請輸入類別名稱" required>
+            <input type="text" class="form-control" id="username" name="username" placeholder="請輸入類別名稱" required>
         </div>
         <button type="submit" class="btn btn-success mt-3">保存</button>
         <button type="button" class="btn btn-secondary mt-3" onclick="location.href='/brandList'">取消</button>
     </form>
 </div>
+<p  th:text="${successMessage}" style="color: red; font-weight: bold; font-size: 2rem;"></p>
+<p  th:text="${errorMessage}" style="color: red; font-weight: bold; font-size: 2rem;"></p>
 </body>
 </html>

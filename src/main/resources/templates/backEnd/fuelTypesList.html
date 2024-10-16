@@ -46,11 +46,13 @@
     <h2>新增燃料</h2>
     <form th:action="@{/fuelType/save}" method="post">
         <div class="form-group">
-            <input type="text" class="form-control" id="fuelTypesName" name="username" style="width: 300px; display: inline-block;" required>
+            <input type="text" class="form-control" id="username" name="username" style="width: 300px; display: inline-block;" required>
         </div>
         <button type="submit" class="btn btn-success mt-3">保存</button>
         <button type="button" class="btn btn-secondary mt-3" onclick="location.href='/fuelTypesList'">取消</button>
     </form>
 </div>
+<p  th:text="${successMessage}" style="color: red; font-weight: bold; font-size: 2rem;"></p>
+<p  th:text="${errorMessage}" style="color: red; font-weight: bold; font-size: 2rem;"></p>
 </body>
 </html>

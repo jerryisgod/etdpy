@@ -29,8 +29,8 @@
 <div class="container-fluid">
     <form id="myForm" th:action="@{/SaveCustomer}" th:object="${carRecord}" method="post">
         <div class="form-group row mb-1 align-items-center">
-            <label for="year" class="col-2 col-form-label">年份</label>
-            <div class="col-4">
+            <label for="year" class="col-1 col-form-label">年份</label>
+            <div class="col-5">
                 <input type="text" id="year" th:field="*{year}" class="form-control"/>
             </div>
             <label for="brand" class="col-1 col-form-label">廠牌</label>
@@ -45,8 +45,8 @@
 
 
         <div class="form-group row mb-1 align-items-center">
-                <label for="model" class="col-2 col-form-label">車型</label>
-                <div class="col-4">
+                <label for="model" class="col-1 col-form-label">車型</label>
+                <div class="col-5">
                     <input type="text" id="model" th:field="*{model}" class="form-control"/>
                     <span th:errors="*{model}" style="color: red;font-weight: bold;">錯誤信息</span>
                 </div>
@@ -58,8 +58,8 @@
 
 
         <div class="form-group row mb-1 align-items-center">
-            <label for="fuelType" class="col-2 col-form-label">燃料</label>
-            <div class="col-9">
+            <label for="fuelType" class="col-1 col-form-label">燃料</label>
+            <div class="col-10">
                 <input list="fuelTypes" id="fuelType" th:field="*{fuelType}" class="form-control"/>
                 <datalist id="fuelTypes">
                     <option th:each="fuelType : ${fuelTypes}" th:value="${fuelType.username}" th:text="${fuelType.username}"></option>
@@ -68,95 +68,95 @@
         </div>
 
         <div class="form-group row mb-1 align-items-center">
-            <label for="color" class="col-2  col-form-label">顏色</label>
-            <div class="col-9">
+            <label for="color" class="col-1  col-form-label">顏色</label>
+            <div class="col-10">
                 <input type="text" id="color" th:field="*{color}" class="form-control"/>
             </div>
         </div>
 
         <div class="form-group row mb-1 align-items-center">
-            <label for="style" class="col-2 col-form-label">樣式</label>
-            <div class="col-9">
+            <label for="style" class="col-1 col-form-label">樣式</label>
+            <div class="col-10">
                 <input type="text" id="style" th:field="*{style}" class="form-control"/>
             </div>
         </div>
 
         <div class="form-group row mb-1 align-items-center">
-            <label for="engineNumber" class="col-2 col-form-label">引擎號碼</label>
-            <div class="col-9">
+            <label for="engineNumber" class="col-1 col-form-label">引擎號碼</label>
+            <div class="col-10">
                 <input type="text" id="engineNumber" th:field="*{engineNumber}" class="form-control"/>
             </div>
         </div>
 
         <div class="form-group row mb-1 align-items-center">
-            <label for="VIN" class="col-2 col-form-label">車身號碼</label>
-            <div class="col-9">
+            <label for="VIN" class="col-1 col-form-label">車身號碼</label>
+            <div class="col-10">
                 <input type="text" id="VIN" th:field="*{VIN}" class="form-control"/>
             </div>
         </div>
 
         <div class="form-group row mb-1 align-items-center">
-                <label for="licensePlate" class="col-2 col-form-label">車牌號碼</label>
-            <div class="col-9">
+                <label for="licensePlate" class="col-1 col-form-label">車牌號碼</label>
+            <div class="col-10">
                 <input type="text" id="licensePlate" th:field="*{licensePlate}" class="form-control" />
                 <span th:errors="*{licensePlate}" style="color: red;font-weight: bold;">錯誤信息</span>
             </div>
         </div>
 
         <div class="form-group row mb-1 align-items-center">
-            <label for="ownerName" class="col-2 col-form-label">車主名稱</label>
-            <div class="col-9">
+            <label for="ownerName" class="col-1 col-form-label">車主名稱</label>
+            <div class="col-10">
                 <input type="text" id="ownerName" th:field="*{ownerName}" class="form-control" />
                 <span th:errors="*{ownerName}" style="color: red;font-weight: bold;">錯誤信息</span>
             </div>
         </div>
 
         <div class="form-group row mb-1 align-items-center">
-            <label for="ownerPhone" class="col-2 col-form-label">車主電話</label>
-            <div class="col-9">
+            <label for="ownerPhone" class="col-1 col-form-label">車主電話</label>
+            <div class="col-10">
                 <input type="text" id="ownerPhone" th:field="*{ownerPhone}" class="form-control" />
                 <span th:errors="*{ownerPhone}" style="color: red;font-weight: bold;">錯誤信息</span>
             </div>
         </div>
 
         <div class="form-group row mb-1 align-items-center">
-            <label for="ownerLandline" class="col-2 col-form-label">車主市話</label>
-            <div class="col-9">
+            <label for="ownerLandline" class="col-1 col-form-label">車主市話</label>
+            <div class="col-10">
                 <input type="text" id="ownerLandline" th:field="*{ownerLandline}" class="form-control"/>
             </div>
         </div>
 
         <div class="form-group row mb-1 align-items-center">
-            <label for="backupPhone" class="col-2 col-form-label">備用聯絡</label>
-            <div class="col-9">
+            <label for="backupPhone" class="col-1 col-form-label">備用聯絡</label>
+            <div class="col-10">
                 <input type="text" id="backupPhone" th:field="*{backupPhone}" class="form-control"/>
             </div>
         </div>
 
         <div class="form-group row mb-1 align-items-center">
-            <label for="ownerAddress" class="col-2 col-form-label">車主地址</label>
-            <div class="col-9">
+            <label for="ownerAddress" class="col-1 col-form-label">車主地址</label>
+            <div class="col-10">
                 <input type="text" id="ownerAddress" th:field="*{ownerAddress}" class="form-control"/>
             </div>
         </div>
 
         <div class="form-group row mb-1 align-items-center">
-            <label for="companyName" class="col-2 col-form-label">公司名稱</label>
-            <div class="col-9">
+            <label for="companyName" class="col-1 col-form-label">公司名稱</label>
+            <div class="col-10">
                 <input type="text" id="companyName" th:field="*{companyName}" class="form-control"/>
             </div>
         </div>
 
         <div class="form-group row mb-1 align-items-center">
-            <label for="companyTaxId" class="col-2 col-form-label">統一編號</label>
-            <div class="col-9">
+            <label for="companyTaxId" class="col-1 col-form-label">統一編號</label>
+            <div class="col-10">
                 <input type="text" id="companyTaxId" th:field="*{companyTaxId}" class="form-control"/>
             </div>
         </div>
 
         <div class="form-group row mb-1 align-items-center">
-            <label for="notes" class="col-2 col-form-label">其他備註</label>
-            <div class="col-9">
+            <label for="notes" class="col-1 col-form-label">其他備註</label>
+            <div class="col-10">
                 <textarea id="notes" th:field="*{notes}" class="form-control"></textarea>
             </div>
         </div>

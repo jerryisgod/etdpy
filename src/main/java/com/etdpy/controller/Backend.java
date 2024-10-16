@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -56,7 +57,7 @@ public class Backend {
 
 	// 保存类别
 	@PostMapping("/category/save")
-	public String saveCategory(Category category, RedirectAttributes redirectAttributes) {
+	public String saveCategory(@ModelAttribute Category category, RedirectAttributes redirectAttributes) {
 		if (categoryRepo.existsByName(category.getName())) {
 			redirectAttributes.addFlashAttribute("errorMessage", "類別已存在");
 			return "redirect:/dashboard";
@@ -84,19 +85,27 @@ public class Backend {
 		redirectAttributes.addFlashAttribute("okMessage", "項目已新增");
 		return "redirect:/dashboard";
 	}
-
-
-
 	// 保存廠牌
 	@PostMapping("/brand/save")
-	public String saveBrand(Brand brand) {
+	public String saveBrand(@ModelAttribute Brand brand, RedirectAttributes redirectAttributes) {
+		if (brandRepo.existsByUsername(brand.getUsername())) {
+			redirectAttributes.addFlashAttribute("errorMessage", "廠牌已存在");
+			return "redirect:/brandList";
+		}
 		brandRepo.save(brand);
+		redirectAttributes.addFlashAttribute("successMessage", "廠牌已新增");
 		return "redirect:/brandList";
 	}
+
 	// 保存燃料
 	@PostMapping("/fuelType/save")
-	public String saveFuelType(fuelType fueltype) {
+	public String saveFuelType(@ModelAttribute fuelType fueltype,RedirectAttributes redirectAttributes) {
+		if (fueltypeRepo.existsByUsername(fueltype.getUsername())){
+			redirectAttributes.addFlashAttribute("errorMessage", "燃料已存在");
+			return "redirect:/fuelTypesList";
+		}
 		fueltypeRepo.save(fueltype);
+		redirectAttributes.addFlashAttribute("successMessage", "燃料已新增");
 		return "redirect:/fuelTypesList";
 	}
 	// 删除类别
