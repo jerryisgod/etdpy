@@ -31,74 +31,213 @@
     <div  class="form-group row mb-4 align-items-center">
         <label for="ownerName" class="col-1 col-form-label" style="font-size: 20px; font-weight: bold; color: #333;">車主</label>
         <div class="col-5">
-            <input type="text" id="ownerName" class="form-control" style="border: none; background-color: #A9A9A9; border-radius: 0;" th:value="${car.ownerName}" />        </div>
+            <input type="text" id="ownerName" class="form-control" style="border: none; background-color: #A9A9A9; border-radius: 0;" th:value="${car.ownerName}" readonly/>
+        </div>
         <label for="orderNumber" class="col-1 col-form-label" style="font-size: 20px; font-weight: bold; color: #333;">單號</label>
         <div class="col-5">
-            <input type="text" id="orderNumber" class="form-control" style="border: none; background-color: #A9A9A9; border-radius: 0;"/>
+            <input type="text" id="orderNumber" class="form-control" style="border: none; background-color: #A9A9A9; border-radius: 0;" readonly/>
         </div>
         <label for="date" class="col-1 col-form-label" style="font-size: 20px; font-weight: bold; color: #333;">日期</label>
         <div class="col-5">
-            <input type="text" id="date" class="form-control" style="border: none; background-color: #A9A9A9; border-radius: 0;"/>
+            <input type="date" id="date" class="form-control" style="border: none; background-color: #A9A9A9; border-radius: 0;" />
         </div>
         <label for="mileage" class="col-1 col-form-label" style="font-size: 20px; font-weight: bold; color: #333;">里程</label>
         <div class="col-5">
-            <input type="text" id="mileage" class="form-control" style="border: none; background-color: #A9A9A9; border-radius: 0;"/>
+            <input type="text" id="mileage" class="form-control" style="border: none; background-color: #A9A9A9; border-radius: 0;" />
         </div>
         <label for="brand" class="col-1 col-form-label" style="font-size: 20px; font-weight: bold; color: #333;">廠牌</label>
         <div class="col-5">
-            <input type="text" id="brand" class="form-control" style="border: none; background-color: #A9A9A9; border-radius: 0;"/>
+            <input type="text" id="brand" class="form-control" style="border: none; background-color: #A9A9A9; border-radius: 0;" th:value="${car.brand}" readonly/>
         </div>
         <label for="model" class="col-1 col-form-label" style="font-size: 20px; font-weight: bold; color: #333;">車型</label>
         <div class="col-5">
-            <input type="text" id="model" class="form-control" style="border: none; background-color: #A9A9A9; border-radius: 0;"/>
+            <input type="text" id="model" class="form-control" style="border: none; background-color: #A9A9A9; border-radius: 0;" th:value="${car.model}" readonly/>
         </div>
         <label for="year" class="col-1 col-form-label" style="font-size: 20px; font-weight: bold; color: #333;">年份</label>
         <div class="col-5">
-            <input type="text" id="year" class="form-control" style="border: none; background-color: #A9A9A9; border-radius: 0;"/>
+            <input type="text" id="year" class="form-control" style="border: none; background-color: #A9A9A9; border-radius: 0;" th:value="${car.year}" readonly/>
         </div>
         <label for="engineCapacity" class="col-1 col-form-label" style="font-size: 20px; font-weight: bold; color: #333;">排量</label>
         <div class="col-5">
-            <input type="text" id="engineCapacity" class="form-control" style="border: none; background-color: #A9A9A9; border-radius: 0;"/>
+            <input type="text" id="engineCapacity" class="form-control" style="border: none; background-color: #A9A9A9; border-radius: 0;" th:value="${car.engineCapacity}" readonly/>
         </div>
         <label for="licensePlate" class="col-1 col-form-label" style=" font-size: 20px; font-weight: bold; color: #333;">車牌</label>
         <div class="col-5">
-            <input type="text" id="licensePlate" class="form-control" style="border: none; background-color: #A9A9A9; border-radius: 0;"/>
+            <input type="text" id="licensePlate" class="form-control" style="border: none; background-color: #A9A9A9; border-radius: 0;" th:value="${car.licensePlate}" readonly/>
         </div>
         <label for="VIN" class="col-1 col-form-label" style="font-weight: bold; color: #333;">VIN</label>
         <div class="col-5">
-            <input type="text" id="VIN" class="form-control" style="border: none; background-color: #A9A9A9; border-radius: 0;"/>
+            <input type="text" id="VIN" class="form-control" style="border: none; background-color: #A9A9A9; border-radius: 0;" th:value="${car.VIN}" readonly/>
         </div>
     </div>
     </div>
-
-
-
     <table class="table">
         <thead>
         <tr>
-            <th scope="col" style="border-bottom: 1px solid black;width:">No.</th>
-            <th scope="col" style="border-bottom: 1px solid black;width:">項目</th>
-            <th scope="col" style="border-bottom: 1px solid black;width:">數量</th>
-            <th scope="col" style="border-bottom: 1px solid black;width:">單價</th>
-            <th scope="col" style="border-bottom: 1px solid black;width:">工資</th>
-            <th scope="col" style="border-bottom: 1px solid black;width:">折扣</th>
-            <th scope="col" style="border-bottom: 1px solid black;width:">金額</th>
+            <th scope="col" style="border-bottom: 1px solid black;width:5%">No.</th>
+            <th scope="col" style="border-bottom: 1px solid black;width:25%">項目</th>
+            <th scope="col" style="border-bottom: 1px solid black;width:10%">數量</th>
+            <th scope="col" style="border-bottom: 1px solid black;width:20%">單價</th>
+            <th scope="col" style="border-bottom: 1px solid black;width:10%">工資</th>
+            <th scope="col" style="border-bottom: 1px solid black;width:10%">折扣</th>
+            <th scope="col" style="border-bottom: 1px solid black;width:20%">金額</th>
         </tr>
         </thead>
         <tbody>
         <tr>
-            <td>1</td>
-            <td>
-                1
+            <td style="border: none;">1</td>
+            <td style="border: none;">
+                <select class="form-control">
+                    <option value="" disabled selected></option>
+                    <optgroup th:each="CA : ${categories}" th:label="${CA.name}">
+                        <option th:each="item : ${items}"
+                                th:value="${item.name}"
+                                th:text="${item.name}">
+                        </option>
+                    </optgroup>
+                </select>
             </td>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
+            <td style="border: none;">
+                <input type="number" class="input1" value="" style="border: none; width: 100%;"/>
+            </td>
+            <td style="border: none;">
+                <input type="number" class="input2" value="" style="border: none; width: 100%;"/>
+            </td>
+            <td style="border: none;">
+                <input type="number" class="input3" value="" style="border: none; width: 100%;"/>
+            </td>
+            <td style="border: none;">
+                <input type="number" class="input4" value="" style="border: none; width: 100%;"/>
+            </td>
+            <td style="border: none;">
+                <input type="text"  class="result" value="" style="border: none; width: 100%;"/>
+            </td>
+        </tr>
+        <tr>
+            <td style="border: none;">1</td>
+            <td style="border: none;">
+                <select class="form-control">
+                    <option value="" disabled selected></option>
+                    <optgroup th:each="CA : ${categories}" th:label="${CA.name}">
+                        <option th:each="item : ${items}"
+                                th:value="${item.name}"
+                                th:text="${item.name}">
+                        </option>
+                    </optgroup>
+                </select>
+            </td>
+            <td style="border: none;">
+                <input type="number" class="input1" value="" style="border: none; width: 100%;"/>
+            </td>
+            <td style="border: none;">
+                <input type="number" class="input2" value="" style="border: none; width: 100%;"/>
+            </td>
+            <td style="border: none;">
+                <input type="number" class="input3" value="" style="border: none; width: 100%;"/>
+            </td>
+            <td style="border: none;">
+                <input type="number" class="input4" value="" style="border: none; width: 100%;"/>
+            </td>
+            <td style="border: none;">
+                <input type="text"  class="result" value="" style="border: none; width: 100%;"/>
+            </td>
         </tr>
         </tbody>
     </table>
+    <!--分隔-->
+    <table class="table">
+    <tr>
+        <th scope="col" style="border-bottom: 1px solid black;width:5%"></th>
+        <th scope="col" style="border-bottom: 1px solid black;width:25%"></th>
+        <th scope="col" style="border-bottom: 1px solid black;width:10%"></th>
+        <th scope="col" style="border-bottom: 1px solid black;width:20%"></th>
+        <th scope="col" style="border-bottom: 1px solid black;width:10%"></th>
+        <th scope="col" style="border-bottom: 1px solid black;width:10%"></th>
+        <th scope="col" style="border-bottom: 1px solid black;width:20%"></th>
+    </tr>
+    </table>
+    <!--分隔-->
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-6">
+
+            </div>
+            <div class="col-6">
+                <br>
+                <div>
+                    小計:<input  class="total" type="text"  value="" style="border: none;width: 150px;" />
+                </div>
+                <div>
+                    折扣:<input type="text" value="" style="border: none;width: 100px;" />
+                </div>
+                <div>
+                    總計:<input  type="text"  value="" style="border: none;width: 150px;" />
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
+<script>
+    const dateInput = document.getElementById('date');
+    dateInput.addEventListener('click', () => dateInput.showPicker?.());
+
+window.onload = function generateOrderNumber() {
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    let randomPart = '';
+
+    for (let i = 0; i < 5; i++) {
+        const randomIndex = Math.floor(Math.random() * chars.length);
+        randomPart += chars[randomIndex];
+    }
+
+    const orderNumber = 'SH' + randomPart;
+    document.getElementById('orderNumber').value = orderNumber;
+};
+    function updateTotal() {
+    let total = 0;
+
+
+    document.querySelectorAll('tbody tr').forEach(function(row) {
+        const quantity = parseFloat(row.querySelector('.input1').value) || 0;
+        const price = parseFloat(row.querySelector('.input2').value) || 0;
+        const additionalValue = parseFloat(row.querySelector('.input3').value) || 0;
+        const discount = parseFloat(row.querySelector('.input4').value) || 0;
+        const rowResult = (quantity * price) + additionalValue - discount;
+        const resultInput = row.querySelector('.result');
+
+
+        if (quantity > 0 || price > 0 || additionalValue > 0) {
+            if (resultInput) {
+                resultInput.value = rowResult;
+            }
+        } else {
+            if (resultInput) {
+                resultInput.value = '';
+            }
+        }
+
+        total += rowResult;
+    });
+
+
+    const totalInputs = document.getElementsByClassName('total');
+    for (let i = 0; i < totalInputs.length; i++) {
+        totalInputs[i].value = total;
+    }
+}
+
+document.addEventListener("input", function(e) {
+    if (
+        e.target.classList.contains("input1") ||
+        e.target.classList.contains("input2") ||
+        e.target.classList.contains("input3") ||
+        e.target.classList.contains("input4")
+    ) {
+        updateTotal();
+    }
+});
+
+</script>
 </html>
