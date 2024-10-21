@@ -70,20 +70,24 @@
         </div>
     </div>
     </div>
-    <table class="table">
+    <table class="table" id="myTable">
         <thead>
         <tr>
+            <th scope="col" style="border-bottom: 1px solid black;width:5%"></th>
             <th scope="col" style="border-bottom: 1px solid black;width:5%">No.</th>
             <th scope="col" style="border-bottom: 1px solid black;width:25%">項目</th>
             <th scope="col" style="border-bottom: 1px solid black;width:10%">數量</th>
-            <th scope="col" style="border-bottom: 1px solid black;width:20%">單價</th>
+            <th scope="col" style="border-bottom: 1px solid black;width:15%">單價</th>
             <th scope="col" style="border-bottom: 1px solid black;width:10%">工資</th>
             <th scope="col" style="border-bottom: 1px solid black;width:10%">折扣</th>
             <th scope="col" style="border-bottom: 1px solid black;width:20%">金額</th>
         </tr>
         </thead>
-        <tbody>
+        <tbody id="tableBody">
         <tr>
+            <td style="border: none;">
+                <button class="delete-btn" style="border: none; background: none; color: red; cursor: pointer;">x</button>
+            </td>
             <td style="border: none;">1</td>
             <td style="border: none;">
                 <select class="form-control">
@@ -113,6 +117,9 @@
             </td>
         </tr>
         <tr>
+            <td style="border: none;">
+                <button class="delete-btn" style="border: none; background: none; color: red; cursor: pointer;">x</button>
+            </td>
             <td style="border: none;">2</td>
             <td style="border: none;">
                 <select class="form-control">
@@ -132,22 +139,113 @@
                 <input type="number" class="input2" value="" style="border: none; width: 100%;"/>
             </td>
             <td style="border: none;">
-
+                <input type="number" class="input3" value="" style="border: none; width: 100%;"/>
+            </td>
+            <td style="border: none;">
+                <input type="number" class="input4" value="" style="border: none; width: 100%;"/>
+            </td>
+            <td style="border: none;">
+                <input type="text"  class="result" value="" style="border: none; width: 100%;"/>
+            </td>
+        </tr>
+        <tr>
+            <td style="border: none;">
+                <button class="delete-btn" style="border: none; background: none; color: red; cursor: pointer;">x</button>
+            </td>
+            <td style="border: none;">3</td>
+            <td style="border: none;">
+                <select class="form-control">
+                    <option value="" disabled selected></option>
+                    <optgroup th:each="CA : ${categories}" th:label="${CA.name}">
+                        <option th:each="item : ${items}"
+                                th:value="${item.name}"
+                                th:text="${item.name}">
+                        </option>
+                    </optgroup>
+                </select>
+            </td>
+            <td style="border: none;">
+                <input type="number" class="input1" value="" style="border: none; width: 100%;"/>
+            </td>
+            <td style="border: none;">
+                <input type="number" class="input2" value="" style="border: none; width: 100%;"/>
+            </td>
+            <td style="border: none;">
+                <input type="number" class="input3" value="" style="border: none; width: 100%;"/>
+            </td>
+            <td style="border: none;">
+                <input type="number" class="input4" value="" style="border: none; width: 100%;"/>
+            </td>
+            <td style="border: none;">
+                <input type="text"  class="result" value="" style="border: none; width: 100%;"/>
+            </td>
+        </tr>
+        <tr>
+            <td style="border: none;">
+                <button class="delete-btn" style="border: none; background: none; color: red; cursor: pointer;">x</button>
+            </td>
+            <td style="border: none;">4</td>
+            <td style="border: none;">
+                <select class="form-control">
+                    <option value="" disabled selected></option>
+                    <optgroup th:each="CA : ${categories}" th:label="${CA.name}">
+                        <option th:each="item : ${items}"
+                                th:value="${item.name}"
+                                th:text="${item.name}">
+                        </option>
+                    </optgroup>
+                </select>
+            </td>
+            <td style="border: none;">
+                <input type="number" class="input1" value="" style="border: none; width: 100%;"/>
+            </td>
+            <td style="border: none;">
+                <input type="number" class="input2" value="" style="border: none; width: 100%;"/>
+            </td>
+            <td style="border: none;">
+                <input type="number" class="input3" value="" style="border: none; width: 100%;"/>
+            </td>
+            <td style="border: none;">
+                <input type="number" class="input4" value="" style="border: none; width: 100%;"/>
+            </td>
+            <td style="border: none;">
+                <input type="text"  class="result" value="" style="border: none; width: 100%;"/>
+            </td>
+        </tr>
+        <tr>
+            <td style="border: none;">
+                <button class="delete-btn" style="border: none; background: none; color: red; cursor: pointer;">x</button>
+            </td>
+            <td style="border: none;">5</td>
+            <td style="border: none;">
+                <select class="form-control">
+                    <option value="" disabled selected></option>
+                    <optgroup th:each="CA : ${categories}" th:label="${CA.name}">
+                        <option th:each="item : ${items}"
+                                th:value="${item.name}"
+                                th:text="${item.name}">
+                        </option>
+                    </optgroup>
+                </select>
+            </td>
+            <td style="border: none;">
+                <input type="number" class="input1" value="" style="border: none; width: 100%;"/>
+            </td>
+            <td style="border: none;">
+                <input type="number" class="input2" value="" style="border: none; width: 100%;"/>
+            </td>
+            <td style="border: none;">
+                <input type="number" class="input3" value="" style="border: none; width: 100%;"/>
+            </td>
+            <td style="border: none;">
+                <input type="number" class="input4" value="" style="border: none; width: 100%;"/>
+            </td>
+            <td style="border: none;">
+                <input type="text"  class="result" value="" style="border: none; width: 100%;"/>
+            </td>
+        </tr>
         </tbody>
     </table>
-    <!--分隔-->
-    <table class="table">
-    <tr>
-        <th scope="col" style="border-bottom: 1px solid black;width:5%"></th>
-        <th scope="col" style="border-bottom: 1px solid black;width:25%"></th>
-        <th scope="col" style="border-bottom: 1px solid black;width:10%"></th>
-        <th scope="col" style="border-bottom: 1px solid black;width:20%"></th>
-        <th scope="col" style="border-bottom: 1px solid black;width:10%"></th>
-        <th scope="col" style="border-bottom: 1px solid black;width:10%"></th>
-        <th scope="col" style="border-bottom: 1px solid black;width:20%"></th>
-    </tr>
-    </table>
-    <!--分隔-->
 
     <div class="container-fluid">
         <div class="row">
@@ -180,10 +278,10 @@
                     小計: <input class="total" type="text" value="" style="border: none; width: 150px;" />
                 </div>
                 <div class="mb-2">
-                    折扣: <input type="text" value="" style="border: none; width: 100px;" />
+                    折扣: <input  class="discount-display" type="text" value="" style="border: none; width: 100px;" />
                 </div>
                 <div class="mb-2">
-                    總計: <input type="text" value="" style="border: none; width: 150px;" />
+                    總計: <input  class="final-total" type="text" value="" style="border: none; width: 150px;" />
                 </div>
             </div>
 
@@ -217,24 +315,24 @@ function attachInputListeners() {
         const input1 = row.querySelector('.input1'); // 數量
         const input2 = row.querySelector('.input2'); // 單價
         const input3 = row.querySelector('.input3'); // 工資
-         const input4 = row.querySelector('.input4'); // 折扣
+        const input4 = row.querySelector('.input4'); // 折扣
         const result = row.querySelector('.result'); // 小計欄位
 
         // 綁定輸入事件，計算金額
-        [input1, input2, input3,input4].forEach(input => {
-            input.addEventListener('input', () => updateSubtotal(input1, input2, input3,input4, result));
+        [input1, input2, input3, input4].forEach(input => {
+            input.addEventListener('input', () => updateSubtotal(input1, input2, input3, input4, result));
         });
     });
 }
 
-function updateSubtotal(input1, input2, input3,input4, result) {
+function updateSubtotal(input1, input2, input3, input4, result) {
     const quantity = parseFloat(input1.value) || 0;
     const unitPrice = parseFloat(input2.value) || 0;
     const laborCost = parseFloat(input3.value) || 0;
     const discount = parseFloat(input4.value) || 0;
 
-    // 計算小計 = (數量 * 單價) + 工資
-    const subtotal = (quantity * unitPrice) + laborCost-discount;
+    // 計算小計 = (數量 * 單價) + 工資 - 折扣
+    const subtotal = (quantity * unitPrice) + laborCost - discount;
     result.value = subtotal.toFixed(0);
 
     updateTotal(); // 每次更新小計時，更新總計
@@ -250,6 +348,89 @@ function updateTotal() {
 
     document.querySelector('.total').value = total.toFixed(0);
 }
+
+// 監聽表格最後一行的點擊事件
+const tbody = document.getElementById('tableBody');
+
+    tbody.addEventListener('click', function (event) {
+        // 確保點擊的是 <tr>
+        const clickedRow = event.target.closest('tr');
+
+    // 檢查是否是最後一行
+    if (clickedRow && clickedRow === tbody.lastElementChild) {
+        addNewRow();
+    }
+});
+
+// 新增行的函數
+function addNewRow() {
+    const tbody = document.getElementById('tableBody');
+
+    // 複製第一個 <tr> 的內容
+    const newRow = tbody.rows[0].cloneNode(true);
+
+    // 設定新行的序號
+    const newRowNumber = tbody.rows.length + 1;
+    newRow.cells[1].textContent = newRowNumber;
+
+    // 清空輸入框和重置下拉選單
+    newRow.querySelectorAll('input').forEach(input => input.value = '');
+    newRow.querySelectorAll('select').forEach(select => select.selectedIndex = 0);
+
+    // 將新行加入 <tbody>
+    tbody.appendChild(newRow);
+
+    // 重新綁定事件監聽器
+    attachInputListeners();
+}
+// 初始綁定事件監聽器
+attachInputListeners();
+</script>
+<script>
+    // 當頁面加載時綁定事件
+document.addEventListener("DOMContentLoaded", function () {
+    const discountInput = document.getElementById("discount");
+    const discountDisplay = document.querySelector(".discount-display");
+    const totalInput = document.querySelector(".total");
+    const finalTotalInput = document.querySelector(".final-total");
+
+    // 更新折扣和總計的函數
+    discountInput.addEventListener("input", function () {
+        const discountValue = parseFloat(discountInput.value) || 0;
+        const subtotalValue = parseFloat(totalInput.value) || 0;
+
+        // 更新折扣顯示欄位
+        discountDisplay.value = discountValue.toFixed(0);
+
+        // 計算總計 = 小計 - 折扣
+        const finalTotal = subtotalValue - discountValue;
+        finalTotalInput.value = finalTotal.toFixed(0);
+    });
+});
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // 為所有的刪除按鈕添加事件監聽器
+        const deleteButtons = document.querySelectorAll('.delete-btn');
+
+        deleteButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                const row = this.closest('tr'); // 找到最近的 <tr> 元素
+                if (row) {
+                    row.remove(); // 刪除該行
+                    updateRowNumbers(); // 更新流水號
+                }
+            });
+        });
+    });
+
+    // 更新流水號的函數
+    function updateRowNumbers() {
+        const rows = document.querySelectorAll('tbody tr'); // 獲取所有行
+        rows.forEach((row, index) => {
+            row.cells[1].textContent = index + 1; // 更新第一個單元格的內容為當前索引 + 1
+        });
+    }
 
 
 </script>
