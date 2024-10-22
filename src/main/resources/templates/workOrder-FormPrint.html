@@ -10,9 +10,13 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <style>
         .a4-container {
-            width: 21cm;
-            margin: 0 auto;
-            padding: 20px;
+            width: 21cm;  /* A4 宽度 */
+            height: 29.7cm; /* A4 高度 */
+            margin: 0 auto; /* 居中对齐 */
+            padding: 20px; /* 内部边距 */
+            border: 2px solid #000; /* 黑色边框 */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 阴影效果 */
+            background-color: #fff; /* 背景颜色 */
         }
 
 
@@ -26,14 +30,77 @@
     </style>
 </head>
 <body>
-<div th:replace="~{header :: header}"></div>
-<div class="con">
-    <button class="no-border-button" onclick="window.location.href='workOrder-search';">
-        <img src="images/undo.jpg" alt="上一頁" />
-    </button>
-    <button class="no-border-button"  id="externalSubmitButton" type="button" >
-        <img src="images/redo.jpg" alt="下一頁" />
-    </button>
+<div class="a4-container">
+    <h3 style="text-align: center;">尚 鴻 汽 車</h3>
+    <div style="text-align: center;">
+        <input type="text" value="維修單" style="text-align: center; font-size: 18px; border: none; outline: none; width: 200px;" />
+    </div>
+
+
+
+    <div style="text-align: right;">
+        入廠日期: <input type="text" style="border: none;width: 100px;" />
+    </div>
+    <div style="overflow: hidden;">
+        <div style="float: left;">
+            電話號碼:<input type="text" value="0921351295" style="border: none;width: 100px;" />
+        </div>
+        <div style="float: right;">
+            入廠里程: <input type="text" style="border: none;width: 100px;" />
+        </div>
+    </div>
+
+    <hr style="margin: 0; padding: 0;">
+
+    <div class="container-fluid" style="margin: 0; padding: 0;">
+        <div class="row" style="margin: 0; padding: 0;">
+            <div class="col-4 text-left" style="margin: 0; padding: 0;">
+                <div style="margin: 0; padding: 0;">年份:<input type="text" style="border: none;width: 150px;" /></div>
+                <div style="margin: 0; padding: 0;">廠牌:<input type="text" style="border: none;width: 150px;" /></div>
+                <div style="margin: 0; padding: 0;">車型:<input type="text" style="border: none;width: 150px;" /></div>
+                <div style="margin: 0; padding: 0;">排量:<input type="text" style="border: none;width: 150px;" /></div>
+            </div>
+            <div class="col-8 text-left" style="margin: 0; padding: 0;">
+                <div style="margin: 0; padding: 0;">車牌號碼:<input type="text" style="border: none;width: 150px;" /></div>
+                <div style="margin: 0; padding: 0;">車身號碼:<input type="text" style="border: none;width: 300px;" /></div>
+                <br>
+                <br>
+                <br>
+                <div style="margin: 0; padding: 0; text-align: right;">
+                    頁數:<input type="text" value="1" style="border: none; width: 25px; display: inline-block; margin: 0;text-align: center;" />,共<input type="text" value="" style="border: none; width: 25px; display: inline-block; margin: 0; text-align: center;" />頁
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <hr style="margin: 0; padding: 10px;">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>行数</th>
+            <th>选择的项目</th>
+            <th>输入1</th>
+            <th>输入2</th>
+            <th>输入3</th>
+            <th>输入4</th>
+            <th>结果</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="item, iterStat : ${selectedItems}">
+            <td></td>
+            <td th:text="${item}"></td> <!-- 选择的项目 -->
+            <td th:text="${input1[iterStat.index]}"></td> <!-- 输入1 -->
+            <td th:text="${input2[iterStat.index]}"></td> <!-- 输入2 -->
+            <td th:text="${input3[iterStat.index]}"></td> <!-- 输入3 -->
+            <td th:text="${input4[iterStat.index]}"></td> <!-- 输入4 -->
+            <td th:text="${result[iterStat.index]}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+
 </div>
+
 </body>
 </html>

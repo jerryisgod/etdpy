@@ -24,13 +24,14 @@
         <img src="images/redo.jpg" alt="下一頁" />
     </button>
 </div>
+<form id="myForm" th:action="@{/submitForm}" method="post">
 <!-- 車輛資訊表格 -->
 <div class="container-fluid">
     <div th:each="car : ${result}">
     <div  class="form-group row mb-4 align-items-center">
         <label for="ownerName" class="col-1 col-form-label" style="font-size: 20px; font-weight: bold; color: #333;">車主</label>
         <div class="col-5">
-            <input type="text" id="ownerName" class="form-control" style="border: none; background-color: #A9A9A9; border-radius: 0;" th:value="${car.ownerName}" readonly/>
+            <input type="text" id="ownerName" name="ownerName" class="form-control" style="border: none; background-color: #A9A9A9; border-radius: 0;" th:value="${car.ownerName}" readonly/>
         </div>
         <label for="orderNumber" class="col-1 col-form-label" style="font-size: 20px; font-weight: bold; color: #333;">單號</label>
         <div class="col-5">
@@ -90,10 +91,10 @@
             </td>
             <td style="border: none;">1</td>
             <td style="border: none;">
-                <select class="form-control">
+                <select class="form-control" name="selectedItems">
                     <option value="" disabled selected></option>
-                    <optgroup th:each="CA : ${categories}" th:label="${CA.name}">
-                        <option th:each="item : ${items}"
+                    <optgroup th:each="category : ${categories}" th:label="${category.name}">
+                        <option th:each="item : ${category.items}"
                                 th:value="${item.name}"
                                 th:text="${item.name}">
                         </option>
@@ -101,19 +102,19 @@
                 </select>
             </td>
             <td style="border: none;">
-                <input type="number" class="input1" value="" style="border: none; width: 100%;"/>
+                <input type="number" name="input1" class="input1" value="" style="border: none; width: 100%;"/>
             </td>
             <td style="border: none;">
-                <input type="number" class="input2" value="" style="border: none; width: 100%;"/>
+                <input type="number" name="input2" class="input2" value="" style="border: none; width: 100%;"/>
             </td>
             <td style="border: none;">
-                <input type="number" class="input3" value="" style="border: none; width: 100%;"/>
+                <input type="number" name="input3" class="input3" value="" style="border: none; width: 100%;"/>
             </td>
             <td style="border: none;">
-                <input type="number" class="input4" value="" style="border: none; width: 100%;"/>
+                <input type="number" name="input4" class="input4" value="" style="border: none; width: 100%;"/>
             </td>
             <td style="border: none;">
-                <input type="text"  class="result" value="" style="border: none; width: 100%;"/>
+                <input type="text" name="result"  class="result" value="" style="border: none; width: 100%;"/>
             </td>
         </tr>
         <tr>
@@ -122,10 +123,10 @@
             </td>
             <td style="border: none;">2</td>
             <td style="border: none;">
-                <select class="form-control">
+                <select class="form-control" name="selectedItems">
                     <option value="" disabled selected></option>
-                    <optgroup th:each="CA : ${categories}" th:label="${CA.name}">
-                        <option th:each="item : ${items}"
+                    <optgroup th:each="category : ${categories}" th:label="${category.name}">
+                        <option th:each="item : ${category.items}"
                                 th:value="${item.name}"
                                 th:text="${item.name}">
                         </option>
@@ -133,115 +134,19 @@
                 </select>
             </td>
             <td style="border: none;">
-                <input type="number" class="input1" value="" style="border: none; width: 100%;"/>
+                <input type="number" name="input1" class="input1" value="" style="border: none; width: 100%;"/>
             </td>
             <td style="border: none;">
-                <input type="number" class="input2" value="" style="border: none; width: 100%;"/>
+                <input type="number" name="input2" class="input2" value="" style="border: none; width: 100%;"/>
             </td>
             <td style="border: none;">
-                <input type="number" class="input3" value="" style="border: none; width: 100%;"/>
+                <input type="number" name="input3" class="input3" value="" style="border: none; width: 100%;"/>
             </td>
             <td style="border: none;">
-                <input type="number" class="input4" value="" style="border: none; width: 100%;"/>
+                <input type="number" name="input4" class="input4" value="" style="border: none; width: 100%;"/>
             </td>
             <td style="border: none;">
-                <input type="text"  class="result" value="" style="border: none; width: 100%;"/>
-            </td>
-        </tr>
-        <tr>
-            <td style="border: none;">
-                <button class="delete-btn" style="border: none; background: none; color: red; cursor: pointer;">x</button>
-            </td>
-            <td style="border: none;">3</td>
-            <td style="border: none;">
-                <select class="form-control">
-                    <option value="" disabled selected></option>
-                    <optgroup th:each="CA : ${categories}" th:label="${CA.name}">
-                        <option th:each="item : ${items}"
-                                th:value="${item.name}"
-                                th:text="${item.name}">
-                        </option>
-                    </optgroup>
-                </select>
-            </td>
-            <td style="border: none;">
-                <input type="number" class="input1" value="" style="border: none; width: 100%;"/>
-            </td>
-            <td style="border: none;">
-                <input type="number" class="input2" value="" style="border: none; width: 100%;"/>
-            </td>
-            <td style="border: none;">
-                <input type="number" class="input3" value="" style="border: none; width: 100%;"/>
-            </td>
-            <td style="border: none;">
-                <input type="number" class="input4" value="" style="border: none; width: 100%;"/>
-            </td>
-            <td style="border: none;">
-                <input type="text"  class="result" value="" style="border: none; width: 100%;"/>
-            </td>
-        </tr>
-        <tr>
-            <td style="border: none;">
-                <button class="delete-btn" style="border: none; background: none; color: red; cursor: pointer;">x</button>
-            </td>
-            <td style="border: none;">4</td>
-            <td style="border: none;">
-                <select class="form-control">
-                    <option value="" disabled selected></option>
-                    <optgroup th:each="CA : ${categories}" th:label="${CA.name}">
-                        <option th:each="item : ${items}"
-                                th:value="${item.name}"
-                                th:text="${item.name}">
-                        </option>
-                    </optgroup>
-                </select>
-            </td>
-            <td style="border: none;">
-                <input type="number" class="input1" value="" style="border: none; width: 100%;"/>
-            </td>
-            <td style="border: none;">
-                <input type="number" class="input2" value="" style="border: none; width: 100%;"/>
-            </td>
-            <td style="border: none;">
-                <input type="number" class="input3" value="" style="border: none; width: 100%;"/>
-            </td>
-            <td style="border: none;">
-                <input type="number" class="input4" value="" style="border: none; width: 100%;"/>
-            </td>
-            <td style="border: none;">
-                <input type="text"  class="result" value="" style="border: none; width: 100%;"/>
-            </td>
-        </tr>
-        <tr>
-            <td style="border: none;">
-                <button class="delete-btn" style="border: none; background: none; color: red; cursor: pointer;">x</button>
-            </td>
-            <td style="border: none;">5</td>
-            <td style="border: none;">
-                <select class="form-control">
-                    <option value="" disabled selected></option>
-                    <optgroup th:each="CA : ${categories}" th:label="${CA.name}">
-                        <option th:each="item : ${items}"
-                                th:value="${item.name}"
-                                th:text="${item.name}">
-                        </option>
-                    </optgroup>
-                </select>
-            </td>
-            <td style="border: none;">
-                <input type="number" class="input1" value="" style="border: none; width: 100%;"/>
-            </td>
-            <td style="border: none;">
-                <input type="number" class="input2" value="" style="border: none; width: 100%;"/>
-            </td>
-            <td style="border: none;">
-                <input type="number" class="input3" value="" style="border: none; width: 100%;"/>
-            </td>
-            <td style="border: none;">
-                <input type="number" class="input4" value="" style="border: none; width: 100%;"/>
-            </td>
-            <td style="border: none;">
-                <input type="text"  class="result" value="" style="border: none; width: 100%;"/>
+                <input type="text" name="result"  class="result" value="" style="border: none; width: 100%;"/>
             </td>
         </tr>
         </tbody>
@@ -288,6 +193,8 @@
         </div>
     </div>
 </div>
+    <button type="submit">提交</button>
+</form>
 </body>
 <script>
     const dateInput = document.getElementById('date');
@@ -349,15 +256,16 @@ function updateTotal() {
     document.querySelector('.total').value = total.toFixed(0);
 }
 
-// 監聽表格最後一行的點擊事件
 const tbody = document.getElementById('tableBody');
 
-    tbody.addEventListener('click', function (event) {
-        // 確保點擊的是 <tr>
-        const clickedRow = event.target.closest('tr');
+// 監聽表格的點擊事件
+tbody.addEventListener('click', function (event) {
+    // 確保點擊的元素是 <td> 並取得其所在的 <tr>
+    const clickedTd = event.target.closest('td');
+    const clickedRow = event.target.closest('tr');
 
-    // 檢查是否是最後一行
-    if (clickedRow && clickedRow === tbody.lastElementChild) {
+    // 確保點擊的 <td> 是最後一行的第二個 <td>
+    if (clickedRow && clickedRow === tbody.lastElementChild && clickedTd && clickedTd.cellIndex === 2) {
         addNewRow();
     }
 });
@@ -383,8 +291,10 @@ function addNewRow() {
     // 重新綁定事件監聽器
     attachInputListeners();
 }
+
 // 初始綁定事件監聽器
 attachInputListeners();
+
 </script>
 <script>
     // 當頁面加載時綁定事件
@@ -410,28 +320,40 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        // 為所有的刪除按鈕添加事件監聽器
-        const deleteButtons = document.querySelectorAll('.delete-btn');
+      const tbody = document.getElementById('tableBody');
 
-        deleteButtons.forEach(button => {
-            button.addEventListener('click', function () {
-                const row = this.closest('tr'); // 找到最近的 <tr> 元素
-                if (row) {
-                    row.remove(); // 刪除該行
-                    updateRowNumbers(); // 更新流水號
-                }
-            });
-        });
-    });
+      // 使用事件委派，監聽所有刪除按鈕的點擊事件
+      tbody.addEventListener('click', function (event) {
+          const button = event.target.closest('.delete-btn'); // 檢查點擊的是不是刪除按鈕
+          if (button) {
+              const row = button.closest('tr'); // 找到最近的 <tr> 元素
+              if (row) {
+                  row.remove(); // 刪除該行
+                  updateRowNumbers(); // 更新流水號
+              }
+          }
+      });
+  });
 
-    // 更新流水號的函數
-    function updateRowNumbers() {
-        const rows = document.querySelectorAll('tbody tr'); // 獲取所有行
-        rows.forEach((row, index) => {
-            row.cells[1].textContent = index + 1; // 更新第一個單元格的內容為當前索引 + 1
-        });
-    }
+  // 更新流水號的函數
+  function updateRowNumbers() {
+      const rows = document.querySelectorAll('tbody tr'); // 獲取所有行
+      rows.forEach((row, index) => {
+          row.cells[1].textContent = index + 1; // 更新第一個單元格的內容為當前索引 + 1
+      });
+  }
 
 
+</script>
+<script>
+    // 获取表单和外部按钮
+     const form = document.getElementById('myForm');
+     const externalSubmitButton = document.getElementById('externalSubmitButton');
+
+     // 监听外部按钮的点击事件
+     externalSubmitButton.addEventListener('click', function() {
+         // 手动触发表单提交
+         form.submit();
+     });
 </script>
 </html>
