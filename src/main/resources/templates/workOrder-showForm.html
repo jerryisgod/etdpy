@@ -20,7 +20,7 @@
     <button class="no-border-button" onclick="window.location.href='workOrder-search';">
         <img src="images/undo.jpg" alt="上一頁" />
     </button>
-    <button class="no-border-button" id="externalSubmitButton" type="button">
+    <button class="no-border-button"  id="externalSubmitButton" type="button" >
         <img src="images/redo.jpg" alt="下一頁" />
     </button>
 </div>
@@ -35,39 +35,41 @@
         </div>
         <label for="orderNumber" class="col-1 col-form-label" style="font-size: 20px; font-weight: bold; color: #333;">單號</label>
         <div class="col-5">
-            <input type="text" id="orderNumber" class="form-control" style="border: none; background-color: #A9A9A9; border-radius: 0;" readonly/>
+            <input type="text" id="orderNumber" name="orderNumber" class="form-control" style="border: none; background-color: #A9A9A9; border-radius: 0;" readonly/>
         </div>
         <label for="date" class="col-1 col-form-label" style="font-size: 20px; font-weight: bold; color: #333;">日期</label>
         <div class="col-5">
-            <input type="date" id="date" class="form-control" style="border: none; background-color: #A9A9A9; border-radius: 0;" />
+            <input type="date" id="date" name="date" class="form-control" style="border: none; background-color: #A9A9A9; border-radius: 0;" required/>
+            <div class="text-danger mt-2" id="error-date" style="display: none;"></div>
         </div>
         <label for="mileage" class="col-1 col-form-label" style="font-size: 20px; font-weight: bold; color: #333;">里程</label>
         <div class="col-5">
-            <input type="text" id="mileage" class="form-control" style="border: none; background-color: #A9A9A9; border-radius: 0;" />
+            <input type="text" id="mileage"  name="mileage" class="form-control" style="border: none; background-color: #A9A9A9; border-radius: 0;" required/>
+            <div class="text-danger mt-2" id="error-mileage" style="display: none;"></div>
         </div>
         <label for="brand" class="col-1 col-form-label" style="font-size: 20px; font-weight: bold; color: #333;">廠牌</label>
         <div class="col-5">
-            <input type="text" id="brand" class="form-control" style="border: none; background-color: #A9A9A9; border-radius: 0;" th:value="${car.brand}" readonly/>
+            <input type="text" id="brand" name="brand" class="form-control" style="border: none; background-color: #A9A9A9; border-radius: 0;" th:value="${car.brand}" readonly/>
         </div>
         <label for="model" class="col-1 col-form-label" style="font-size: 20px; font-weight: bold; color: #333;">車型</label>
         <div class="col-5">
-            <input type="text" id="model" class="form-control" style="border: none; background-color: #A9A9A9; border-radius: 0;" th:value="${car.model}" readonly/>
+            <input type="text" id="model" name="model01" class="form-control" style="border: none; background-color: #A9A9A9; border-radius: 0;" th:value="${car.model}" readonly/>
         </div>
         <label for="year" class="col-1 col-form-label" style="font-size: 20px; font-weight: bold; color: #333;">年份</label>
         <div class="col-5">
-            <input type="text" id="year" class="form-control" style="border: none; background-color: #A9A9A9; border-radius: 0;" th:value="${car.year}" readonly/>
+            <input type="text" id="year" name="year" class="form-control" style="border: none; background-color: #A9A9A9; border-radius: 0;" th:value="${car.year}" readonly/>
         </div>
         <label for="engineCapacity" class="col-1 col-form-label" style="font-size: 20px; font-weight: bold; color: #333;">排量</label>
         <div class="col-5">
-            <input type="text" id="engineCapacity" class="form-control" style="border: none; background-color: #A9A9A9; border-radius: 0;" th:value="${car.engineCapacity}" readonly/>
+            <input type="text" id="engineCapacity" name="engineCapacity" class="form-control" style="border: none; background-color: #A9A9A9; border-radius: 0;" th:value="${car.engineCapacity}" readonly/>
         </div>
         <label for="licensePlate" class="col-1 col-form-label" style=" font-size: 20px; font-weight: bold; color: #333;">車牌</label>
         <div class="col-5">
-            <input type="text" id="licensePlate" class="form-control" style="border: none; background-color: #A9A9A9; border-radius: 0;" th:value="${car.licensePlate}" readonly/>
+            <input type="text" id="licensePlate" name="licensePlate" class="form-control" style="border: none; background-color: #A9A9A9; border-radius: 0;" th:value="${car.licensePlate}" readonly/>
         </div>
         <label for="VIN" class="col-1 col-form-label" style="font-weight: bold; color: #333;">VIN</label>
         <div class="col-5">
-            <input type="text" id="VIN" class="form-control" style="border: none; background-color: #A9A9A9; border-radius: 0;" th:value="${car.VIN}" readonly/>
+            <input type="text" id="VIN" name="VIN" class="form-control" style="border: none; background-color: #A9A9A9; border-radius: 0;" th:value="${car.VIN}" readonly/>
         </div>
     </div>
     </div>
@@ -91,7 +93,7 @@
             </td>
             <td style="border: none;">1</td>
             <td style="border: none;">
-                <select class="form-control" name="selectedItems">
+                <select class="form-control" id="selectedItems" name="selectedItems" required>
                     <option value="" disabled selected></option>
                     <optgroup th:each="category : ${categories}" th:label="${category.name}">
                         <option th:each="item : ${category.items}"
@@ -100,6 +102,7 @@
                         </option>
                     </optgroup>
                 </select>
+                <div class="text-danger mt-2" id="error-selectedItems" style="display: none;"></div>
             </td>
             <td style="border: none;">
                 <input type="number" name="input1" class="input1" value="" style="border: none; width: 100%;"/>
@@ -114,7 +117,7 @@
                 <input type="number" name="input4" class="input4" value="" style="border: none; width: 100%;"/>
             </td>
             <td style="border: none;">
-                <input type="text" name="result"  class="result" value="" style="border: none; width: 100%;"/>
+                <input type="text" name="result"  class="result" value="" style="border: none; width: 100%;" readonly/>
             </td>
         </tr>
         <tr>
@@ -146,7 +149,103 @@
                 <input type="number" name="input4" class="input4" value="" style="border: none; width: 100%;"/>
             </td>
             <td style="border: none;">
-                <input type="text" name="result"  class="result" value="" style="border: none; width: 100%;"/>
+                <input type="text" name="result"  class="result" value="" style="border: none; width: 100%;" readonly/>
+            </td>
+        </tr>
+        <tr>
+            <td style="border: none;">
+                <button class="delete-btn" style="border: none; background: none; color: red; cursor: pointer;">x</button>
+            </td>
+            <td style="border: none;">3</td>
+            <td style="border: none;">
+                <select class="form-control" name="selectedItems">
+                    <option value="" disabled selected></option>
+                    <optgroup th:each="category : ${categories}" th:label="${category.name}">
+                        <option th:each="item : ${category.items}"
+                                th:value="${item.name}"
+                                th:text="${item.name}">
+                        </option>
+                    </optgroup>
+                </select>
+            </td>
+            <td style="border: none;">
+                <input type="number" name="input1" class="input1" value="" style="border: none; width: 100%;"/>
+            </td>
+            <td style="border: none;">
+                <input type="number" name="input2" class="input2" value="" style="border: none; width: 100%;"/>
+            </td>
+            <td style="border: none;">
+                <input type="number" name="input3" class="input3" value="" style="border: none; width: 100%;"/>
+            </td>
+            <td style="border: none;">
+                <input type="number" name="input4" class="input4" value="" style="border: none; width: 100%;"/>
+            </td>
+            <td style="border: none;">
+                <input type="text" name="result"  class="result" value="" style="border: none; width: 100%;" readonly/>
+            </td>
+        </tr>
+        <tr>
+            <td style="border: none;">
+                <button class="delete-btn" style="border: none; background: none; color: red; cursor: pointer;">x</button>
+            </td>
+            <td style="border: none;">4</td>
+            <td style="border: none;">
+                <select class="form-control" name="selectedItems">
+                    <option value="" disabled selected></option>
+                    <optgroup th:each="category : ${categories}" th:label="${category.name}">
+                        <option th:each="item : ${category.items}"
+                                th:value="${item.name}"
+                                th:text="${item.name}">
+                        </option>
+                    </optgroup>
+                </select>
+            </td>
+            <td style="border: none;">
+                <input type="number" name="input1" class="input1" value="" style="border: none; width: 100%;"/>
+            </td>
+            <td style="border: none;">
+                <input type="number" name="input2" class="input2" value="" style="border: none; width: 100%;"/>
+            </td>
+            <td style="border: none;">
+                <input type="number" name="input3" class="input3" value="" style="border: none; width: 100%;"/>
+            </td>
+            <td style="border: none;">
+                <input type="number" name="input4" class="input4" value="" style="border: none; width: 100%;"/>
+            </td>
+            <td style="border: none;">
+                <input type="text" name="result"  class="result" value="" style="border: none; width: 100%;" readonly/>
+            </td>
+        </tr>
+        <tr>
+            <td style="border: none;">
+                <button class="delete-btn" style="border: none; background: none; color: red; cursor: pointer;">x</button>
+            </td>
+            <td style="border: none;">5</td>
+            <td style="border: none;">
+                <select class="form-control" name="selectedItems">
+                    <option value="" disabled selected></option>
+                    <optgroup th:each="category : ${categories}" th:label="${category.name}">
+                        <option th:each="item : ${category.items}"
+                                th:value="${item.name}"
+                                th:text="${item.name}">
+                        </option>
+                    </optgroup>
+                </select>
+            </td>
+            <td style="border: none;">
+                <input type="number" name="input1" class="input1" value="" style="border: none; width: 100%;"/>
+            </td>
+            <td style="border: none;">
+                <input type="number" name="input2" class="input2" value="" style="border: none; width: 100%;"/>
+            </td>
+            <td style="border: none;">
+                <input type="number" name="input3" class="input3" value="" style="border: none; width: 100%;"/>
+            </td>
+            <td style="border: none;">
+                <input type="number" name="input4" class="input4" value="" style="border: none; width: 100%;"/>
+            </td>
+            <td style="border: none;">
+                <input type="text" name="result"  class="result" value="" style="border: none; width: 100%;"readonly/>
             </td>
         </tr>
         </tbody>
@@ -160,7 +259,7 @@
                         <label for="companyTaxId" class="form-label" style="font-size: 20px; font-weight: bold; color: #333;">統編:</label>
                     </div>
                     <div class="col-10">
-                        <input list="companyTaxIdOptions" type="text" id="companyTaxId" class="form-control" style="border: none; background-color: #A9A9A9; border-radius: 0;"/>
+                        <input list="companyTaxIdOptions" name="companyTaxId" type="text" id="companyTaxId" class="form-control" style="border: none; background-color: #A9A9A9; border-radius: 0;"/>
                         <datalist id="companyTaxIdOptions">
                             <option th:each="car : ${result}"
                                     th:value="${car.companyTaxId}">
@@ -173,27 +272,27 @@
                         <label for="discount" class="form-label" style="font-size: 20px; font-weight: bold; color: #333;">折扣:</label>
                     </div>
                     <div class="col-10">
-                        <input type="text" id="discount" class="form-control" style="border: none; background-color: #A9A9A9; border-radius: 0;"/>
+                        <input type="text" id="discount"  name="discount"  class="form-control" style="border: none; background-color: #A9A9A9; border-radius: 0;" required />
                     </div>
+                    <div class="text-danger mt-2" id="error-message" style="display: none;"></div>
                 </div>
             </div>
 
             <div class="col-6">
                 <div class="mb-2">
-                    小計: <input class="total" type="text" value="" style="border: none; width: 150px;" />
+                    小計: <input class="total"  name="total" type="text" value="" style="border: none; width: 150px;" />
                 </div>
                 <div class="mb-2">
-                    折扣: <input  class="discount-display" type="text" value="" style="border: none; width: 100px;" />
+                    折扣: <input  class="discount-display"  name="discount" type="text" value="" style="border: none; width: 100px;" />
                 </div>
                 <div class="mb-2">
-                    總計: <input  class="final-total" type="text" value="" style="border: none; width: 150px;" />
+                    總計: <input  class="final-total"   name="finalTotal" type="text" value="0" style="border: none; width: 150px;" />
                 </div>
             </div>
 
         </div>
     </div>
 </div>
-    <button type="submit">提交</button>
 </form>
 </body>
 <script>
@@ -346,14 +445,54 @@ document.addEventListener("DOMContentLoaded", function () {
 
 </script>
 <script>
-    // 获取表单和外部按钮
-     const form = document.getElementById('myForm');
-     const externalSubmitButton = document.getElementById('externalSubmitButton');
+       const form = document.getElementById('myForm');
+       const externalSubmitButton = document.getElementById('externalSubmitButton');
 
-     // 监听外部按钮的点击事件
-     externalSubmitButton.addEventListener('click', function() {
-         // 手动触发表单提交
-         form.submit();
-     });
+       externalSubmitButton.addEventListener('click', function() {
+           if (validateForm()) {
+
+               form.submit();
+           }
+       });
+
+       function validateForm() {
+           const discountInput = document.getElementById("discount");
+           const errorMessage = document.getElementById("error-message");
+           const dateInput = document.getElementById("date");
+           const errorDate = document.getElementById("error-date");
+           const mileageInput = document.getElementById("mileage");
+           const errorMileage = document.getElementById("error-mileage");
+           const selectedItemsInput = document.getElementById("selectedItems");
+           const errorSelectedItems= document.getElementById("error-selectedItems");
+
+           errorMessage.style.display = "none";
+           errorDate.style.display = "none";
+           errorMileage.style.display = "none";
+           errorSelectedItems.style.display = "none";
+
+           if (discountInput.value.trim() === "") {
+               errorMessage.textContent = "折扣不能為空,如果沒有請填0";
+               errorMessage.style.display = "block";
+               return false;
+           }
+          if (dateInput.value.trim() === "") {
+               errorDate.textContent = "日期不能為空";
+               errorDate.style.display = "block";
+               return false;
+           }
+           if (mileageInput.value.trim() === "") {
+               errorMileage.textContent = "里程不能為空";
+               errorMileage.style.display = "block";
+               return false;
+           }
+            if (selectedItemsInput.value.trim() === "") {
+               errorSelectedItems.textContent = "最少選擇一個項目";
+               errorSelectedItems.style.display = "block";
+               return false;
+           }
+
+           return true;
+       }
 </script>
+
 </html>
